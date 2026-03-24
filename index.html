@@ -1,2 +1,537 @@
-Welcome! This is a placeholder for Julia L. Simpson's research site. Check 
-back soon!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julia L. Simpson — Researcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --olive-dark: #3d4a2e;
+      --olive: #5c6b44;
+      --olive-light: #8a9a6d;
+      --sage: #a8b89a;
+      --sage-light: #c8d4bc;
+      --mint: #dfe8d8;
+      --cream: #f4f7f0;
+      --ocean-deep: #2c4a5a;
+      --ocean: #3d6b7e;
+      --ocean-light: #6a9fb5;
+      --ocean-pale: #b4d4e0;
+      --sky: #d6eaf0;
+      --white: #ffffff;
+      --text-primary: #2a2f25;
+      --text-secondary: #4a5240;
+      --text-light: #6b7560;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-primary);
+      background: var(--cream);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(244, 247, 240, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--sage-light);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(61, 74, 46, 0.08); }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.9rem 2rem;
+    }
+    .nav-brand {
+      font-family: 'Lora', serif; font-weight: 600; font-size: 1.15rem;
+      color: var(--olive-dark); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.88rem; font-weight: 500; color: var(--text-secondary);
+      text-decoration: none; letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ocean); }
+
+    /* Mobile nav */
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span {
+      display: block; width: 22px; height: 2px; background: var(--olive-dark);
+      margin: 5px 0; transition: 0.3s;
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      background: linear-gradient(165deg, var(--cream) 0%, var(--mint) 35%, var(--sky) 70%, var(--ocean-pale) 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 600px 400px at 80% 20%, rgba(106, 159, 181, 0.15), transparent),
+        radial-gradient(ellipse 500px 500px at 20% 80%, rgba(138, 154, 109, 0.12), transparent);
+    }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto; padding: 8rem 2rem 5rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-text h1 {
+      font-family: 'Lora', serif; font-size: 3rem; font-weight: 600;
+      color: var(--olive-dark); line-height: 1.25; margin-bottom: 0.5rem;
+    }
+    .hero-text .subtitle {
+      font-size: 1.15rem; color: var(--ocean); font-weight: 400; margin-bottom: 1.5rem;
+    }
+    .hero-text p {
+      font-size: 1rem; color: var(--text-secondary); max-width: 480px; margin-bottom: 2rem;
+    }
+    .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.6rem; border-radius: 6px;
+      font-size: 0.9rem; font-weight: 500; text-decoration: none;
+      transition: all 0.25s;
+    }
+    .btn-primary {
+      background: var(--olive); color: var(--white);
+      box-shadow: 0 2px 8px rgba(92, 107, 68, 0.25);
+    }
+    .btn-primary:hover {
+      background: var(--olive-dark);
+      box-shadow: 0 4px 16px rgba(92, 107, 68, 0.35);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      border: 1.5px solid var(--ocean); color: var(--ocean);
+      background: rgba(255,255,255,0.5);
+    }
+    .btn-outline:hover {
+      background: var(--ocean); color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    /* Hero graphic: abstract wave illustration */
+    .hero-graphic { position: relative; display: flex; align-items: center; justify-content: center; }
+    .wave-container {
+      width: 100%; aspect-ratio: 1; max-width: 420px;
+      border-radius: 50%; position: relative;
+      background: linear-gradient(135deg, rgba(168, 184, 154, 0.3), rgba(106, 159, 181, 0.3));
+      box-shadow: 0 20px 60px rgba(61, 107, 126, 0.12);
+    }
+    .wave-container svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+    /* ---- SECTIONS ---- */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--ocean-light); margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Lora', serif; font-size: 2rem; font-weight: 600;
+      color: var(--olive-dark); margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      font-size: 1.05rem; color: var(--text-light); max-width: 600px; margin-bottom: 3rem;
+    }
+
+    /* ---- ABOUT ---- */
+    #about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; align-items: start; }
+    .about-text p { margin-bottom: 1rem; color: var(--text-secondary); }
+    .about-details {
+      background: var(--cream); border-radius: 12px; padding: 2rem;
+      border: 1px solid var(--sage-light);
+    }
+    .detail-item { margin-bottom: 1.5rem; }
+    .detail-item:last-child { margin-bottom: 0; }
+    .detail-label {
+      font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--olive-light); margin-bottom: 0.25rem;
+    }
+    .detail-value { font-size: 0.95rem; color: var(--text-primary); }
+
+    /* ---- RESEARCH ---- */
+    #research {
+      background: linear-gradient(180deg, var(--cream) 0%, var(--mint) 100%);
+    }
+    .research-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .research-card {
+      background: var(--white); border-radius: 12px; padding: 2.5rem;
+      border: 1px solid var(--sage-light);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .research-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(61, 74, 46, 0.08);
+    }
+    .card-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem; font-size: 1.5rem;
+    }
+    .card-icon.flux {
+      background: linear-gradient(135deg, var(--ocean-pale), var(--sky));
+      color: var(--ocean-deep);
+    }
+    .card-icon.wind {
+      background: linear-gradient(135deg, var(--sage-light), var(--mint));
+      color: var(--olive);
+    }
+    .research-card h3 {
+      font-family: 'Lora', serif; font-size: 1.3rem; font-weight: 600;
+      color: var(--olive-dark); margin-bottom: 0.75rem;
+    }
+    .research-card p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+    .tag {
+      font-size: 0.75rem; padding: 0.3rem 0.75rem; border-radius: 20px;
+      background: var(--cream); color: var(--text-light); border: 1px solid var(--sage-light);
+    }
+
+    /* ---- APPROACH ---- */
+    #approach { background: var(--white); }
+    .approach-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .approach-item { text-align: center; padding: 2rem 1.5rem; }
+    .approach-icon {
+      width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 1.25rem;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--mint), var(--sky));
+      color: var(--ocean-deep); font-size: 1.5rem;
+    }
+    .approach-item h3 {
+      font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600;
+      color: var(--olive-dark); margin-bottom: 0.5rem;
+    }
+    .approach-item p { font-size: 0.9rem; color: var(--text-secondary); }
+
+    /* ---- CONNECT ---- */
+    #connect {
+      background: linear-gradient(135deg, var(--olive-dark) 0%, var(--ocean-deep) 100%);
+      color: var(--white); text-align: center;
+    }
+    #connect .section-label { color: var(--sage-light); }
+    #connect .section-title { color: var(--white); }
+    #connect .section-subtitle { color: var(--sage); margin-left: auto; margin-right: auto; }
+    .connect-links {
+      display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap;
+    }
+    .connect-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.8rem 1.8rem; border-radius: 6px;
+      font-size: 0.9rem; font-weight: 500; text-decoration: none;
+      transition: all 0.25s;
+      background: rgba(255,255,255,0.12); color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.25);
+    }
+    .connect-btn:hover {
+      background: rgba(255,255,255,0.22);
+      transform: translateY(-1px);
+    }
+    .connect-btn svg { width: 18px; height: 18px; }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: var(--olive-dark); color: var(--sage);
+      text-align: center; padding: 2rem; font-size: 0.85rem;
+    }
+
+    /* ---- ANIMATIONS ---- */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+      .hero-text p { margin-left: auto; margin-right: auto; }
+      .hero-links { justify-content: center; }
+      .hero-graphic { order: -1; }
+      .wave-container { max-width: 260px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .research-cards { grid-template-columns: 1fr; }
+      .approach-items { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column; position: absolute;
+        top: 100%; left: 0; right: 0; background: rgba(244,247,240,0.98);
+        padding: 1.5rem 2rem; gap: 1.25rem;
+        border-bottom: 1px solid var(--sage-light);
+      }
+      .hamburger { display: block; }
+      .hero-text h1 { font-size: 2.2rem; }
+      .section-title { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Julia L. Simpson</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#approach">Methods</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <h1>Julia L. Simpson</h1>
+      <div class="subtitle">PhD Researcher · Columbia University</div>
+      <p>Studying how the ocean and atmosphere exchange heat and momentum — and applying machine learning to improve climate predictions and support sustainable offshore energy.</p>
+      <div class="hero-links">
+        <a href="#research" class="btn btn-primary">View My Research</a>
+        <a href="#connect" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-graphic">
+      <div class="wave-container">
+        <svg viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Abstract ocean-atmosphere waves -->
+          <defs>
+            <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#6a9fb5" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#3d6b7e" stop-opacity="0.2"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#8a9a6d" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#5c6b44" stop-opacity="0.15"/>
+            </linearGradient>
+            <linearGradient id="g3" x1="0%" y1="50%" x2="100%" y2="50%">
+              <stop offset="0%" stop-color="#b4d4e0" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#6a9fb5" stop-opacity="0.3"/>
+            </linearGradient>
+          </defs>
+          <!-- Atmosphere layer -->
+          <path d="M40 180 Q110 140 180 170 Q250 200 320 160 Q360 140 400 165 L400 80 Q330 110 260 90 Q190 70 120 100 Q70 120 40 100 Z" fill="url(#g2)" opacity="0.6">
+            <animate attributeName="d" dur="8s" repeatCount="indefinite" values="
+              M40 180 Q110 140 180 170 Q250 200 320 160 Q360 140 400 165 L400 80 Q330 110 260 90 Q190 70 120 100 Q70 120 40 100 Z;
+              M40 170 Q110 150 180 160 Q250 190 320 170 Q360 150 400 155 L400 90 Q330 100 260 100 Q190 80 120 95 Q70 110 40 105 Z;
+              M40 180 Q110 140 180 170 Q250 200 320 160 Q360 140 400 165 L400 80 Q330 110 260 90 Q190 70 120 100 Q70 120 40 100 Z" />
+          </path>
+          <!-- Interface / flux zone -->
+          <path d="M30 210 Q100 190 170 215 Q240 240 310 205 Q370 180 410 210 L410 230 Q350 200 280 225 Q210 250 140 230 Q80 215 30 240 Z" fill="url(#g3)" opacity="0.7">
+            <animate attributeName="d" dur="6s" repeatCount="indefinite" values="
+              M30 210 Q100 190 170 215 Q240 240 310 205 Q370 180 410 210 L410 230 Q350 200 280 225 Q210 250 140 230 Q80 215 30 240 Z;
+              M30 215 Q100 200 170 210 Q240 230 310 215 Q370 195 410 205 L410 225 Q350 210 280 220 Q210 240 140 225 Q80 210 30 235 Z;
+              M30 210 Q100 190 170 215 Q240 240 310 205 Q370 180 410 210 L410 230 Q350 200 280 225 Q210 250 140 230 Q80 215 30 240 Z" />
+          </path>
+          <!-- Ocean layer -->
+          <path d="M30 260 Q100 240 180 265 Q260 290 340 255 Q380 240 410 260 L410 340 Q350 320 270 340 Q190 360 110 335 Q60 320 30 340 Z" fill="url(#g1)" opacity="0.6">
+            <animate attributeName="d" dur="10s" repeatCount="indefinite" values="
+              M30 260 Q100 240 180 265 Q260 290 340 255 Q380 240 410 260 L410 340 Q350 320 270 340 Q190 360 110 335 Q60 320 30 340 Z;
+              M30 270 Q100 250 180 260 Q260 280 340 265 Q380 250 410 255 L410 335 Q350 325 270 335 Q190 350 110 340 Q60 330 30 335 Z;
+              M30 260 Q100 240 180 265 Q260 290 340 255 Q380 240 410 260 L410 340 Q350 320 270 340 Q190 360 110 335 Q60 320 30 340 Z" />
+          </path>
+          <!-- Small flux arrows -->
+          <g opacity="0.35">
+            <line x1="130" y1="230" x2="130" y2="190" stroke="#5c6b44" stroke-width="1.5" stroke-dasharray="4 3">
+              <animate attributeName="y2" dur="3s" repeatCount="indefinite" values="190;180;190" />
+            </line>
+            <polygon points="126,192 130,182 134,192" fill="#5c6b44">
+              <animate attributeName="points" dur="3s" repeatCount="indefinite" values="126,192 130,182 134,192;126,182 130,172 134,182;126,192 130,182 134,192" />
+            </polygon>
+            <line x1="230" y1="195" x2="230" y2="235" stroke="#3d6b7e" stroke-width="1.5" stroke-dasharray="4 3">
+              <animate attributeName="y1" dur="4s" repeatCount="indefinite" values="195;185;195" />
+            </line>
+            <polygon points="226,233 230,243 234,233" fill="#3d6b7e">
+              <animate attributeName="points" dur="4s" repeatCount="indefinite" values="226,233 230,243 234,233;226,233 230,243 234,233;226,233 230,243 234,233" />
+            </polygon>
+            <line x1="310" y1="225" x2="310" y2="190" stroke="#5c6b44" stroke-width="1.5" stroke-dasharray="4 3">
+              <animate attributeName="y2" dur="3.5s" repeatCount="indefinite" values="190;178;190" />
+            </line>
+            <polygon points="306,192 310,182 314,192" fill="#5c6b44">
+              <animate attributeName="points" dur="3.5s" repeatCount="indefinite" values="306,192 310,182 314,192;306,180 310,170 314,180;306,192 310,182 314,192" />
+            </polygon>
+          </g>
+          <!-- Labels -->
+          <text x="60" y="120" font-family="Inter, sans-serif" font-size="11" fill="#5c6b44" opacity="0.5" font-weight="500">Atmosphere</text>
+          <text x="60" y="310" font-family="Inter, sans-serif" font-size="11" fill="#3d6b7e" opacity="0.5" font-weight="500">Ocean</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Bridging ocean science and machine learning</h2>
+        <p>I'm a PhD student in the Department of Earth and Environmental Engineering at Columbia University, working in the Gentine Lab. My research focuses on understanding and improving how we model the exchanges of heat and momentum between the ocean and atmosphere — processes that are critical for weather forecasting and climate projection.</p>
+        <p>Before starting my PhD, I worked for two years as an engineering consultant in process, energy, and environmental engineering. I hold a B.S. in Chemical Engineering from Washington University in St. Louis.</p>
+        <p>My current work is supported by the NSF-funded Learning the Earth with Artificial Intelligence and Physics (LEAP) Science and Technology Center, where I combine observational data, remote sensing, and physics-informed machine learning to build better parameterizations of air-sea fluxes.</p>
+      </div>
+      <div class="about-details fade-in">
+        <div class="detail-item">
+          <div class="detail-label">Affiliation</div>
+          <div class="detail-value">Columbia University<br>Dept. of Earth &amp; Environmental Engineering</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Lab</div>
+          <div class="detail-value">Gentine Lab</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Education</div>
+          <div class="detail-value">B.S. Chemical Engineering<br>Washington University in St. Louis</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Funding</div>
+          <div class="detail-value">NSF LEAP Science &amp; Technology Center</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-inner">
+    <div class="section-label fade-in">Research</div>
+    <h2 class="section-title fade-in">Current focus areas</h2>
+    <p class="section-subtitle fade-in">Exploring the physical exchanges at the ocean-atmosphere boundary and their implications for climate and renewable energy.</p>
+    <div class="research-cards">
+      <div class="research-card fade-in">
+        <div class="card-icon flux">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M5 9l7-7 7 7M5 15l7 7 7-7"/></svg>
+        </div>
+        <h3>Air-Sea Flux Parameterization</h3>
+        <p>Developing improved parameterizations of heat, moisture, and momentum fluxes at the ocean-atmosphere interface. By combining in situ observations, satellite remote sensing, and physics-informed machine learning, I work to reduce biases in bulk flux algorithms used by weather and climate models.</p>
+        <div class="card-tags">
+          <span class="tag">Heat Flux</span>
+          <span class="tag">Momentum Transfer</span>
+          <span class="tag">Bulk Algorithms</span>
+          <span class="tag">ML Parameterization</span>
+        </div>
+      </div>
+      <div class="research-card fade-in">
+        <div class="card-icon wind">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+        </div>
+        <h3>Offshore Wind Energy</h3>
+        <p>Investigating how air-sea interactions influence the marine atmospheric boundary layer in regions planned for offshore wind development. Understanding these dynamics is essential for accurate wind resource assessment, turbine performance prediction, and the long-term viability of offshore wind farms.</p>
+        <div class="card-tags">
+          <span class="tag">Boundary Layer</span>
+          <span class="tag">Wind Resource</span>
+          <span class="tag">Renewable Energy</span>
+          <span class="tag">Coupled Modeling</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="section-inner">
+    <div class="section-label fade-in" style="text-align:center;">Methods</div>
+    <h2 class="section-title fade-in" style="text-align:center;">Research approach</h2>
+    <p class="section-subtitle fade-in" style="text-align:center; margin-left:auto; margin-right:auto;">Integrating observational data with computational techniques to advance understanding of ocean-atmosphere coupling.</p>
+    <div class="approach-items">
+      <div class="approach-item fade-in">
+        <div class="approach-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
+        </div>
+        <h3>In Situ &amp; Remote Sensing</h3>
+        <p>Leveraging ship-based measurements, buoy networks, and satellite observations to build comprehensive datasets of air-sea exchange.</p>
+      </div>
+      <div class="approach-item fade-in">
+        <div class="approach-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>
+        </div>
+        <h3>Machine Learning</h3>
+        <p>Applying physics-informed neural networks and other ML techniques to discover patterns and improve parameterizations of complex flux processes.</p>
+      </div>
+      <div class="approach-item fade-in">
+        <div class="approach-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-10"/></svg>
+        </div>
+        <h3>Climate Modeling</h3>
+        <p>Integrating improved parameterizations into Earth system models to enhance the fidelity of weather and climate simulations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section id="connect">
+  <div class="section-inner">
+    <div class="section-label fade-in">Connect</div>
+    <h2 class="section-title fade-in">Let's get in touch</h2>
+    <p class="section-subtitle fade-in">Interested in collaboration, have questions about my research, or just want to connect? Feel free to reach out.</p>
+    <div class="connect-links fade-in">
+      <a href="mailto:jls2391@columbia.edu" class="connect-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
+        Email
+      </a>
+      <a href="https://www.linkedin.com/in/julialsimpson" target="_blank" rel="noopener" class="connect-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://scholar.google.com" target="_blank" rel="noopener" class="connect-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 9a8 8 0 017.162 4.44L24 9.5z"/></svg>
+        Google Scholar
+      </a>
+      <a href="#" class="connect-btn" id="resumeLink">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Resume / CV
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Julia L. Simpson · Columbia University</p>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
