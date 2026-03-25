@@ -125,7 +125,7 @@
     /* Hero graphic: abstract wave illustration */
     .hero-graphic { position: relative; display: flex; align-items: center; justify-content: center; }
     .wave-container {
-      width: 100%; aspect-ratio: 1; max-width: 500px;
+      width: 100%; aspect-ratio: 1; max-width: 580px;
       border-radius: 50%; position: relative;
       background: linear-gradient(135deg, rgba(168, 184, 154, 0.3), rgba(106, 159, 181, 0.3));
       box-shadow: 0 20px 60px rgba(61, 107, 126, 0.12);
@@ -349,7 +349,7 @@
       .hero-text p { margin-left: auto; margin-right: auto; }
       .hero-links { justify-content: center; }
       .hero-graphic { order: -1; }
-      .wave-container { max-width: 300px; }
+      .wave-container { max-width: 340px; }
       .about-grid { grid-template-columns: 1fr; }
       .research-cards { grid-template-columns: 1fr; }
       .approach-items { grid-template-columns: 1fr; }
@@ -464,6 +464,43 @@
           <!-- Labels -->
           <text x="60" y="120" font-family="Inter, sans-serif" font-size="11" fill="#7a8a6a" opacity="0.9" font-weight="600">Atmosphere</text>
           <text x="60" y="310" font-family="Inter, sans-serif" font-size="11" fill="#3d6b7e" opacity="0.8" font-weight="600">Ocean</text>
+
+          <!-- Wind turbine (offshore, base at ocean surface ~y=255) -->
+          <g opacity="0.8">
+            <!-- Tower (from water surface up into atmosphere) -->
+            <line x1="345" y1="255" x2="345" y2="185" stroke="#4a5a3a" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Submerged foundation -->
+            <line x1="345" y1="255" x2="345" y2="268" stroke="#4a5a3a" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+            <!-- Nacelle -->
+            <ellipse cx="345" cy="184" rx="4" ry="3" fill="#5c6b44"/>
+            <!-- Blades with rotation animation -->
+            <g>
+              <animateTransform attributeName="transform" type="rotate" from="0 345 184" to="360 345 184" dur="5s" repeatCount="indefinite"/>
+              <!-- Blade 1 (up) -->
+              <line x1="345" y1="184" x2="345" y2="155" stroke="#5c6b44" stroke-width="1.8" stroke-linecap="round"/>
+              <!-- Blade 2 (lower-right) -->
+              <line x1="345" y1="184" x2="370" y2="199" stroke="#5c6b44" stroke-width="1.8" stroke-linecap="round"/>
+              <!-- Blade 3 (lower-left) -->
+              <line x1="345" y1="184" x2="320" y2="199" stroke="#5c6b44" stroke-width="1.8" stroke-linecap="round"/>
+            </g>
+            <!-- Hub -->
+            <circle cx="345" cy="184" r="2.5" fill="#3d4a2e"/>
+          </g>
+
+          <!-- Transmission line (two poles on the flux/interface zone) -->
+          <g opacity="0.6">
+            <!-- Pole 1 (near turbine) -->
+            <line x1="300" y1="250" x2="300" y2="222" stroke="#4a5a3a" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="294" y1="226" x2="306" y2="226" stroke="#4a5a3a" stroke-width="1" stroke-linecap="round"/>
+            <line x1="296" y1="230" x2="304" y2="230" stroke="#4a5a3a" stroke-width="1" stroke-linecap="round"/>
+            <!-- Pole 2 (farther toward shore) -->
+            <line x1="260" y1="248" x2="260" y2="222" stroke="#4a5a3a" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="254" y1="226" x2="266" y2="226" stroke="#4a5a3a" stroke-width="1" stroke-linecap="round"/>
+            <line x1="256" y1="230" x2="264" y2="230" stroke="#4a5a3a" stroke-width="1" stroke-linecap="round"/>
+            <!-- Wires (catenary curves between poles) -->
+            <path d="M306 226 Q280 233 266 226" fill="none" stroke="#4a5a3a" stroke-width="0.8"/>
+            <path d="M304 230 Q280 237 264 230" fill="none" stroke="#4a5a3a" stroke-width="0.8"/>
+          </g>
         </svg>
       </div>
     </div>
