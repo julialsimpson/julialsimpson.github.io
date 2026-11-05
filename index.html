@@ -1,9 +1,18 @@
 <!DOCTYPE html>
+<!--
+  Personal website: Julia L. Simpson
+  Modified 2026-11-05: aligned content with the Oct 2026 one-page and extended resumes;
+    reframed around climate and energy data science (hero, about, "What I do",
+    current work, experience, education, skills, projects, talks).
+    Redrew hero graphic: onshore transmission line (left), central offshore turbine with
+    wind and temperature labels, labeled sensible heat / latent heat / momentum fluxes (right).
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Julia L. Simpson — Researcher</title>
+  <title>Julia L. Simpson — Climate &amp; Energy Data Science</title>
+  <meta name="description" content="Julia L. Simpson, NDSEG Fellow: climate and energy data analysis, machine learning, and scientific communication.">
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -283,6 +292,16 @@
       border: 1px solid var(--sage-light);
     }
 
+    .skills-group {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 0.9rem;
+    }
+    .skills-group:last-child { margin-bottom: 0; }
+    .skills-group-label {
+      font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--olive-light); min-width: 10rem;
+    }
+    .training-note { font-size: 0.85rem; color: var(--text-light); margin-top: 1.25rem; }
+
     /* ---- PROJECTS ---- */
     #projects { background: var(--white); }
     .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
@@ -304,6 +323,22 @@
       color: var(--olive-dark); margin-bottom: 0.5rem;
     }
     .project-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; }
+
+    .subsection-title {
+      font-family: 'Lora', serif; font-size: 1.3rem; font-weight: 600;
+      color: var(--olive-dark); margin: 3.5rem 0 1.25rem;
+    }
+    .projects-grid.secondary .project-card { background: var(--white); }
+    .talks-list { list-style: none; padding: 0; }
+    .talks-list li {
+      font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;
+      padding: 0.9rem 0; border-bottom: 1px solid var(--sage-light);
+    }
+    .talks-list li:last-child { border-bottom: none; }
+    .talk-kind {
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--ocean-light); margin-right: 0.5rem;
+    }
 
     /* ---- CONNECT ---- */
     #connect {
@@ -355,6 +390,7 @@
       .approach-items { grid-template-columns: 1fr; }
       .education-grid { grid-template-columns: 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
+      .skills-group-label { min-width: 100%; }
     }
     @media (max-width: 600px) {
       .nav-links { display: none; }
@@ -378,7 +414,7 @@
     <a href="#" class="nav-brand">Julia L. Simpson</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
-      <li><a href="#research">Research</a></li>
+      <li><a href="#research">Work</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#connect">Connect</a></li>
@@ -394,112 +430,117 @@
   <div class="hero-inner">
     <div class="hero-text">
       <h1>Julia L. Simpson</h1>
-      <div class="subtitle">PhD Researcher · Columbia University</div>
-      <p>Studying how the ocean and atmosphere exchange heat and momentum — and applying machine learning to improve climate predictions and support sustainable offshore energy.</p>
+      <div class="subtitle">National Defense Science and Engineering Graduate (NDSEG) Fellow</div>
+      <p>Expertise in climate and energy data analysis, machine learning, and scientific communication. Passionate about advancing climate resilience, accelerating the energy transition, and integrating science and policy. 6+ years of combined research and engineering consulting experience.</p>
       <div class="hero-links">
-        <a href="#research" class="btn btn-primary">View My Research</a>
+        <a href="#research" class="btn btn-primary">View My Work</a>
         <a href="#connect" class="btn btn-outline">Get in Touch</a>
       </div>
     </div>
     <div class="hero-graphic">
       <div class="wave-container">
-        <svg viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Abstract ocean-atmosphere waves -->
+        <svg viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
+             aria-label="Onshore transmission line on the left, an offshore wind turbine in the center with wind and temperature labels, and sensible heat, latent heat, and momentum fluxes between ocean and atmosphere on the right">
+          <!-- Layout (2026-11-05): land + transmission line on the left (x < 165), turbine near center (x = 205),
+               labeled air-sea flux arrows over the open ocean on the right (x = 285-375). -->
           <defs>
-            <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient id="gOcean" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stop-color="#6a9fb5" stop-opacity="0.85"/>
-              <stop offset="100%" stop-color="#3d6b7e" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#3d6b7e" stop-opacity="0.75"/>
             </linearGradient>
-            <linearGradient id="g2" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#e8efe2" stop-opacity="0.95"/>
-              <stop offset="100%" stop-color="#d5e0cc" stop-opacity="0.85"/>
+            <linearGradient id="gLand" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#a8b89a"/>
+              <stop offset="100%" stop-color="#8a9a6d"/>
             </linearGradient>
-            <linearGradient id="g3" x1="0%" y1="50%" x2="100%" y2="50%">
-              <stop offset="0%" stop-color="#b4d4e0" stop-opacity="0.9"/>
-              <stop offset="100%" stop-color="#6a9fb5" stop-opacity="0.7"/>
+            <linearGradient id="gAir" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+              <stop offset="100%" stop-color="#e8efe2" stop-opacity="0.8"/>
             </linearGradient>
+            <marker id="arrUp" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 Z" fill="context-stroke"/>
+            </marker>
+            <clipPath id="sceneClip"><circle cx="210" cy="210" r="206"/></clipPath>
           </defs>
-          <!-- Atmosphere layer -->
-          <path d="M40 180 Q110 140 180 170 Q250 200 320 160 Q360 140 400 165 L400 80 Q330 110 260 90 Q190 70 120 100 Q70 120 40 100 Z" fill="url(#g2)" opacity="0.9">
-            <animate attributeName="d" dur="8s" repeatCount="indefinite" values="
-              M40 180 Q110 140 180 170 Q250 200 320 160 Q360 140 400 165 L400 80 Q330 110 260 90 Q190 70 120 100 Q70 120 40 100 Z;
-              M40 170 Q110 150 180 160 Q250 190 320 170 Q360 150 400 155 L400 90 Q330 100 260 100 Q190 80 120 95 Q70 110 40 105 Z;
-              M40 180 Q110 140 180 170 Q250 200 320 160 Q360 140 400 165 L400 80 Q330 110 260 90 Q190 70 120 100 Q70 120 40 100 Z" />
-          </path>
-          <!-- Interface / flux zone -->
-          <path d="M30 210 Q100 190 170 215 Q240 240 310 205 Q370 180 410 210 L410 230 Q350 200 280 225 Q210 250 140 230 Q80 215 30 240 Z" fill="url(#g3)" opacity="0.95">
-            <animate attributeName="d" dur="6s" repeatCount="indefinite" values="
-              M30 210 Q100 190 170 215 Q240 240 310 205 Q370 180 410 210 L410 230 Q350 200 280 225 Q210 250 140 230 Q80 215 30 240 Z;
-              M30 215 Q100 200 170 210 Q240 230 310 215 Q370 195 410 205 L410 225 Q350 210 280 220 Q210 240 140 225 Q80 210 30 235 Z;
-              M30 210 Q100 190 170 215 Q240 240 310 205 Q370 180 410 210 L410 230 Q350 200 280 225 Q210 250 140 230 Q80 215 30 240 Z" />
-          </path>
-          <!-- Ocean layer -->
-          <path d="M30 260 Q100 240 180 265 Q260 290 340 255 Q380 240 410 260 L410 340 Q350 320 270 340 Q190 360 110 335 Q60 320 30 340 Z" fill="url(#g1)" opacity="0.9">
-            <animate attributeName="d" dur="10s" repeatCount="indefinite" values="
-              M30 260 Q100 240 180 265 Q260 290 340 255 Q380 240 410 260 L410 340 Q350 320 270 340 Q190 360 110 335 Q60 320 30 340 Z;
-              M30 270 Q100 250 180 260 Q260 280 340 265 Q380 250 410 255 L410 335 Q350 325 270 335 Q190 350 110 340 Q60 330 30 335 Z;
-              M30 260 Q100 240 180 265 Q260 290 340 255 Q380 240 410 260 L410 340 Q350 320 270 340 Q190 360 110 335 Q60 320 30 340 Z" />
-          </path>
-          <!-- Small flux arrows -->
-          <g opacity="0.7">
-            <line x1="130" y1="230" x2="130" y2="190" stroke="#5c6b44" stroke-width="1.5" stroke-dasharray="4 3">
-              <animate attributeName="y2" dur="3s" repeatCount="indefinite" values="190;180;190" />
-            </line>
-            <polygon points="126,192 130,182 134,192" fill="#5c6b44">
-              <animate attributeName="points" dur="3s" repeatCount="indefinite" values="126,192 130,182 134,192;126,182 130,172 134,182;126,192 130,182 134,192" />
-            </polygon>
-            <line x1="230" y1="195" x2="230" y2="235" stroke="#3d6b7e" stroke-width="1.5" stroke-dasharray="4 3">
-              <animate attributeName="y1" dur="4s" repeatCount="indefinite" values="195;185;195" />
-            </line>
-            <polygon points="226,233 230,243 234,233" fill="#3d6b7e">
-              <animate attributeName="points" dur="4s" repeatCount="indefinite" values="226,233 230,243 234,233;226,233 230,243 234,233;226,233 230,243 234,233" />
-            </polygon>
-            <line x1="310" y1="225" x2="310" y2="190" stroke="#5c6b44" stroke-width="1.5" stroke-dasharray="4 3">
-              <animate attributeName="y2" dur="3.5s" repeatCount="indefinite" values="190;178;190" />
-            </line>
-            <polygon points="306,192 310,182 314,192" fill="#5c6b44">
-              <animate attributeName="points" dur="3.5s" repeatCount="indefinite" values="306,192 310,182 314,192;306,180 310,170 314,180;306,192 310,182 314,192" />
-            </polygon>
-          </g>
-          <!-- Labels -->
-          <text x="60" y="120" font-family="Inter, sans-serif" font-size="11" fill="#7a8a6a" opacity="0.9" font-weight="600">Atmosphere</text>
-          <text x="60" y="310" font-family="Inter, sans-serif" font-size="11" fill="#3d6b7e" opacity="0.8" font-weight="600">Ocean</text>
+          <g clip-path="url(#sceneClip)">
 
-          <!-- Wind turbine (offshore, base at ocean surface ~y=255) -->
-          <g opacity="0.8">
-            <!-- Tower (from water surface up into atmosphere) -->
-            <line x1="345" y1="255" x2="345" y2="185" stroke="#4a5a3a" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- Submerged foundation -->
-            <line x1="345" y1="255" x2="345" y2="268" stroke="#4a5a3a" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
-            <!-- Nacelle -->
-            <ellipse cx="345" cy="184" rx="4" ry="3" fill="#5c6b44"/>
-            <!-- Blades with rotation animation -->
+          <!-- Atmosphere -->
+          <rect x="0" y="60" width="420" height="195" fill="url(#gAir)"/>
+          <text x="210" y="62" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#7a8a6a">Atmosphere</text>
+
+          <!-- Land (left) -->
+          <path d="M0 248 Q60 232 100 238 Q140 244 168 253 Q178 330 215 420 L0 420 Z" fill="url(#gLand)" opacity="0.9"/>
+          <text x="58" y="300" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#3d4a2e" opacity="0.85">Land</text>
+
+          <!-- Ocean (right) -->
+          <path d="M165 254 Q215 244 265 254 Q315 264 365 252 Q390 246 420 252 L420 420 L215 420 Q178 330 165 254 Z" fill="url(#gOcean)">
+            <animate attributeName="d" dur="7s" repeatCount="indefinite" values="
+              M165 254 Q215 244 265 254 Q315 264 365 252 Q390 246 420 252 L420 420 L215 420 Q178 330 165 254 Z;
+              M165 252 Q215 260 265 250 Q315 244 365 256 Q390 260 420 254 L420 420 L215 420 Q178 330 165 254 Z;
+              M165 254 Q215 244 265 254 Q315 264 365 252 Q390 246 420 252 L420 420 L215 420 Q178 330 165 254 Z"/>
+          </path>
+          <text x="300" y="315" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#ffffff" opacity="0.9">Ocean</text>
+
+          <!-- Onshore transmission line: two lattice towers and catenary conductors -->
+          <g stroke="#3d4a2e" stroke-linecap="round" opacity="0.85">
+            <path d="M52 238 L60 196 L68 238 M55 222 L65 222 M57 210 L63 210 M48 202 L72 202" stroke-width="1.4"/>
+            <path d="M112 241 L120 199 L128 241 M115 225 L125 225 M117 213 L123 213 M108 205 L132 205" stroke-width="1.4"/>
+            <path d="M0 200 Q28 213 48 202 M72 202 Q90 213 108 205" stroke-width="0.9"/>
+            <path d="M132 205 Q150 214 166 238" stroke-width="0.9"/>
+          </g>
+          <!-- Export cable from turbine to shore -->
+          <path d="M205 262 Q185 268 166 252" stroke="#3d4a2e" stroke-width="0.9" stroke-dasharray="3 2" opacity="0.7"/>
+          <text x="90" y="185" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" fill="#3d4a2e">Transmission line</text>
+
+          <!-- Offshore wind turbine (center) -->
+          <g>
+            <line x1="205" y1="268" x2="205" y2="250" stroke="#3d4a2e" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+            <line x1="205" y1="252" x2="205" y2="152" stroke="#3d4a2e" stroke-width="2.8" stroke-linecap="round"/>
+            <ellipse cx="205" cy="151" rx="5" ry="3.5" fill="#5c6b44"/>
             <g>
-              <animateTransform attributeName="transform" type="rotate" from="0 345 184" to="360 345 184" dur="5s" repeatCount="indefinite"/>
-              <!-- Blade 1 (up) -->
-              <line x1="345" y1="184" x2="345" y2="155" stroke="#5c6b44" stroke-width="1.8" stroke-linecap="round"/>
-              <!-- Blade 2 (lower-right) -->
-              <line x1="345" y1="184" x2="370" y2="199" stroke="#5c6b44" stroke-width="1.8" stroke-linecap="round"/>
-              <!-- Blade 3 (lower-left) -->
-              <line x1="345" y1="184" x2="320" y2="199" stroke="#5c6b44" stroke-width="1.8" stroke-linecap="round"/>
+              <animateTransform attributeName="transform" type="rotate" from="0 205 151" to="360 205 151" dur="5s" repeatCount="indefinite"/>
+              <line x1="205" y1="151" x2="205" y2="113" stroke="#5c6b44" stroke-width="2" stroke-linecap="round"/>
+              <line x1="205" y1="151" x2="238" y2="170" stroke="#5c6b44" stroke-width="2" stroke-linecap="round"/>
+              <line x1="205" y1="151" x2="172" y2="170" stroke="#5c6b44" stroke-width="2" stroke-linecap="round"/>
             </g>
-            <!-- Hub -->
-            <circle cx="345" cy="184" r="2.5" fill="#3d4a2e"/>
+            <circle cx="205" cy="151" r="3" fill="#3d4a2e"/>
           </g>
 
-          <!-- Transmission line (two poles on the flux/interface zone) -->
-          <g opacity="0.6">
-            <!-- Pole 1 (near turbine) -->
-            <line x1="300" y1="250" x2="300" y2="222" stroke="#4a5a3a" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="294" y1="226" x2="306" y2="226" stroke="#4a5a3a" stroke-width="1" stroke-linecap="round"/>
-            <line x1="296" y1="230" x2="304" y2="230" stroke="#4a5a3a" stroke-width="1" stroke-linecap="round"/>
-            <!-- Pole 2 (farther toward shore) -->
-            <line x1="260" y1="248" x2="260" y2="222" stroke="#4a5a3a" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="254" y1="226" x2="266" y2="226" stroke="#4a5a3a" stroke-width="1" stroke-linecap="round"/>
-            <line x1="256" y1="230" x2="264" y2="230" stroke="#4a5a3a" stroke-width="1" stroke-linecap="round"/>
-            <!-- Wires (catenary curves between poles) -->
-            <path d="M306 226 Q280 233 266 226" fill="none" stroke="#4a5a3a" stroke-width="0.8"/>
-            <path d="M304 230 Q280 237 264 230" fill="none" stroke="#4a5a3a" stroke-width="0.8"/>
+          <!-- Wind label: streamlines approaching the rotor -->
+          <g stroke="#3d6b7e" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.9">
+            <path d="M128 130 Q143 126 158 130" marker-end="url(#arrUp)">
+              <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="1.5s" repeatCount="indefinite"/>
+            </path>
+            <path d="M122 142 Q140 138 158 142" marker-end="url(#arrUp)" stroke-dasharray="5 2">
+              <animate attributeName="stroke-dashoffset" from="0" to="-14" dur="1.5s" repeatCount="indefinite"/>
+            </path>
+          </g>
+          <text x="140" y="117" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" fill="#2c4a5a">Wind</text>
+
+          <!-- Temperature label: thermometer beside the nacelle -->
+          <g transform="translate(246 112)">
+            <rect x="0" y="0" width="5" height="18" rx="2.5" fill="#ffffff" stroke="#2c4a5a" stroke-width="1"/>
+            <circle cx="2.5" cy="21" r="4" fill="#c0704a" stroke="#2c4a5a" stroke-width="1"/>
+            <rect x="1.5" y="7" width="2" height="12" fill="#c0704a"/>
+          </g>
+          <text x="257" y="128" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" fill="#2c4a5a">Temperature</text>
+
+          <!-- Air-sea fluxes (right): sensible and latent heat upward, momentum downward -->
+          <g stroke-width="1.6" stroke-linecap="round" fill="none">
+            <line x1="290" y1="246" x2="290" y2="200" stroke="#c0704a" marker-end="url(#arrUp)">
+              <animate attributeName="y2" dur="3s" repeatCount="indefinite" values="204;194;204"/>
+            </line>
+            <path d="M335 246 Q330 236 335 226 Q340 216 335 206 L335 200" stroke="#3d6b7e" stroke-dasharray="4 2" marker-end="url(#arrUp)">
+              <animate attributeName="stroke-dashoffset" from="0" to="-12" dur="1.5s" repeatCount="indefinite"/>
+            </path>
+            <line x1="378" y1="198" x2="378" y2="244" stroke="#3d4a2e" marker-end="url(#arrUp)">
+              <animate attributeName="y1" dur="3.5s" repeatCount="indefinite" values="198;188;198"/>
+            </line>
+          </g>
+          <g font-family="Inter, sans-serif" font-size="9" font-weight="600" text-anchor="middle">
+            <text x="290" y="172" fill="#9a5536"><tspan x="290">Sensible</tspan><tspan x="290" dy="11">heat</tspan></text>
+            <text x="335" y="172" fill="#2c4a5a"><tspan x="335">Latent</tspan><tspan x="335" dy="11">heat</tspan></text>
+            <text x="378" y="183" fill="#3d4a2e">Momentum</text>
+          </g>
           </g>
         </svg>
       </div>
@@ -513,24 +554,63 @@
     <div class="about-grid">
       <div class="about-text fade-in">
         <div class="section-label">About</div>
-        <h2 class="section-title">Bridging ocean science and machine learning</h2>
-        <p>I'm a PhD student in the Department of Earth and Environmental Engineering at Columbia University. My research focuses on understanding and improving how we model the exchanges of heat and momentum between the ocean and atmosphere — processes that are critical for weather forecasting and climate projection.</p>
-        <p>Before starting my PhD, I worked for two years as an engineering consultant in process, energy, and environmental engineering. I hold a B.S. in Chemical Engineering from Washington University in St. Louis.</p>
-        <p>My current work is supported by the National Defense Science and Engineering Graduate (NDSEG) Fellowship. I combine observational data, remote sensing, and physics-informed machine learning to build better parameterizations of air-sea fluxes.</p>
+        <h2 class="section-title">Climate and energy data science, grounded in engineering practice</h2>
+        <p>I'm a graduate researcher in Earth and Environmental Engineering at Columbia University, where I build data-driven tools at the intersection of climate and energy: forecasting wind along transmission corridors to support dynamic line rating, and using machine learning to overcome sparse ocean observations in climate models.</p>
+        <p>Before and alongside graduate school, I spent more than two years as an engineer at Burns &amp; McDonnell, permitting solar, battery storage, and transmission projects and analyzing environmental data for remediation and air-emissions work. That experience keeps my analysis connected to how energy infrastructure is planned, permitted, and regulated.</p>
+        <p>I hold an M.S. in Earth &amp; Environmental Engineering from Columbia, with a concentration in Sustainable Energy &amp; Carbon and additional focuses on data science, water resources, and climate risk, and a B.S. in Chemical Engineering from Washington University in St. Louis.</p>
       </div>
       <div class="about-details fade-in">
         <div class="detail-item">
-          <div class="detail-label">Affiliation</div>
-          <div class="detail-value">Columbia University<br>Dept. of Earth &amp; Environmental Engineering</div>
+          <div class="detail-label">Focus</div>
+          <div class="detail-value">Climate &amp; energy data science</div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-label">Location</div>
+          <div class="detail-value">New York, NY</div>
         </div>
         <div class="detail-item">
           <div class="detail-label">Education</div>
-          <div class="detail-value">B.S. Chemical Engineering<br>Washington University in St. Louis</div>
+          <div class="detail-value">M.Phil. &amp; M.S., Earth &amp; Environmental Engineering<br>Columbia University<br><br>B.S. Chemical Engineering<br>Washington University in St. Louis</div>
         </div>
         <div class="detail-item">
-          <div class="detail-label">Funding</div>
-          <div class="detail-value">National Defense Science and Engineering Graduate (NDSEG) Fellowship</div>
+          <div class="detail-label">Fellowship</div>
+          <div class="detail-value">National Defense Science and Engineering Graduate (NDSEG) Fellow, 2024 &ndash; present</div>
         </div>
+        <div class="detail-item">
+          <div class="detail-label">Credential</div>
+          <div class="detail-value">Engineer in Training (EIT)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I DO (uses the existing #approach styles) -->
+<section id="approach">
+  <div class="section-inner">
+    <div class="section-label fade-in">What I do</div>
+    <h2 class="section-title fade-in">Data science for climate and energy decisions</h2>
+    <div class="approach-items">
+      <div class="approach-item fade-in">
+        <div class="approach-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="12" r="2"/><path d="M7 6l10 6M7 18l10-6"/></svg>
+        </div>
+        <h3>Machine learning for sparse data</h3>
+        <p>Hybrid physics&ndash;machine learning workflows, neural network ensembles, and transfer learning that carry models trained on synthetic data over to scarce real-world observations.</p>
+      </div>
+      <div class="approach-item fade-in">
+        <div class="approach-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        </div>
+        <h3>Spatial statistics &amp; uncertainty</h3>
+        <p>Spatial analysis between sparse measurement points, forecasts with calibrated confidence intervals, and causal discovery to interpret what drives a prediction.</p>
+      </div>
+      <div class="approach-item fade-in">
+        <div class="approach-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+        </div>
+        <h3>Energy systems &amp; policy</h3>
+        <p>Grid-integration policy scenarios and optimization, plus hands-on permitting experience for solar, battery storage, and transmission projects.</p>
       </div>
     </div>
   </div>
@@ -539,34 +619,35 @@
 <!-- RESEARCH -->
 <section id="research">
   <div class="section-inner">
-    <div class="section-label fade-in">Research</div>
-    <h2 class="section-title fade-in">Current focus areas</h2>
-    <p class="section-subtitle fade-in">Exploring the physical exchanges at the ocean-atmosphere boundary and their implications for climate and renewable energy.</p>
+    <div class="section-label fade-in">Current Work</div>
+    <h2 class="section-title fade-in">Research at Columbia University</h2>
+    <p class="section-subtitle fade-in">Applied data science for transmission and wind energy, and for representing air-sea exchange in climate models.</p>
     <div class="research-cards">
-      <div class="research-card fade-in">
-        <div class="card-icon flux">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M5 9l7-7 7 7M5 15l7 7 7-7"/></svg>
-        </div>
-        <h3>Air-Sea Flux Parameterization</h3>
-        <p>Developing improved parameterizations of heat, moisture, and momentum fluxes at the ocean-atmosphere interface. By combining in situ observations, satellite remote sensing, and physics-informed machine learning, I work to reduce biases in bulk flux algorithms used by weather and climate models.</p>
-        <div class="card-tags">
-          <span class="tag">Heat Flux</span>
-          <span class="tag">Momentum Transfer</span>
-          <span class="tag">Bulk Algorithms</span>
-          <span class="tag">ML Parameterization</span>
-        </div>
-      </div>
       <div class="research-card fade-in">
         <div class="card-icon wind">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
         </div>
-        <h3>Offshore Wind Energy</h3>
-        <p>Investigating how air-sea interactions influence the marine atmospheric boundary layer in regions planned for offshore wind development. Understanding these dynamics is essential for accurate wind resource assessment, turbine performance prediction, and the long-term viability of offshore wind farms.</p>
+        <h3>Wind Energy &amp; Dynamic Line Rating</h3>
+        <p>The same wind that drives generation also cools transmission lines and raises their dynamic line rating (DLR), so transfer capacity peaks just as wind output does. I apply spatial analysis to develop a risk-mitigation framework for wind energy along transmission corridors: predicting wind speed between sparse measurement points, forecasting with calibrated confidence intervals, and recommending sensor placements to improve safety and reduce curtailment.</p>
         <div class="card-tags">
-          <span class="tag">Boundary Layer</span>
-          <span class="tag">Wind Resource</span>
-          <span class="tag">Renewable Energy</span>
-          <span class="tag">Coupled Modeling</span>
+          <span class="tag">Dynamic Line Rating</span>
+          <span class="tag">Spatial Statistics</span>
+          <span class="tag">Calibrated Uncertainty</span>
+          <span class="tag">Sensor Placement</span>
+          <span class="tag">Curtailment</span>
+        </div>
+      </div>
+      <div class="research-card fade-in">
+        <div class="card-icon flux">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M5 9l7-7 7 7M5 15l7 7 7-7"/></svg>
+        </div>
+        <h3>Machine Learning for Air-Sea Fluxes</h3>
+        <p>Scarce oceanographic observations limit how well climate models represent air-sea fluxes. I develop a hybrid physics&ndash;machine learning workflow using ensembles of neural networks trained on 3 million synthetic samples, then fine-tuned via transfer learning to ~10,000 in-situ observations. Causal discovery (PCMCI+) illuminates directional relationships between meteorological drivers and fluxes, enabling physically grounded interpretation of the predictions.</p>
+        <div class="card-tags">
+          <span class="tag">Transfer Learning</span>
+          <span class="tag">Neural Network Ensembles</span>
+          <span class="tag">Causal Discovery</span>
+          <span class="tag">Climate Modeling</span>
         </div>
       </div>
     </div>
@@ -578,19 +659,21 @@
   <div class="section-inner">
     <div class="section-label fade-in">Experience</div>
     <h2 class="section-title fade-in">Professional &amp; research history</h2>
-    <p class="section-subtitle fade-in">From environmental consulting to climate research, bridging engineering practice with scientific discovery.</p>
+    <p class="section-subtitle fade-in">From energy-infrastructure consulting to climate and energy data science.</p>
 
     <div class="timeline">
       <div class="timeline-item current fade-in">
         <div class="timeline-dot"></div>
         <div class="timeline-header">
-          <span class="timeline-role">Ph.D. Candidate</span>
+          <span class="timeline-role">Graduate Researcher (Ph.D. Candidate)</span>
           <span class="timeline-date">Aug 2022 &ndash; Present</span>
         </div>
         <div class="timeline-org">Columbia University &middot; Earth &amp; Environmental Engineering &middot; New York, NY</div>
         <ul class="timeline-details">
-          <li>Developing a hybrid physics-machine learning workflow using ensembles of neural networks trained on 3 million synthetic samples, then fine-tuned via transfer learning to ~10,000 real-world observations to address data scarcity in air-sea flux modeling.</li>
-          <li>Employing causal discovery methods (PCMCI+) to illuminate directional relationships between meteorological drivers and air-sea fluxes, enabling physically grounded interpretation of ML predictions.</li>
+          <li>Applies spatial analysis to develop a risk-mitigation framework for wind energy along transmission corridors, where wind both drives generation and raises a line's dynamic line rating (DLR). Predicts wind speed between sparse measurement points, forecasts with calibrated confidence intervals, and culminates in sensor-placement recommendations to improve safety and reduce curtailment.</li>
+          <li>Addresses oceanographic observational data scarcity in air-sea flux representation in climate modeling by developing a hybrid physics&ndash;machine learning workflow using ensembles of neural networks trained on 3 million synthetic samples, then fine-tuned via transfer learning to ~10,000 in-situ observations.</li>
+          <li>Employs causal discovery methods (PCMCI+) to illuminate directional relationships between meteorological drivers and air-sea fluxes, enabling physically grounded interpretation of machine learning predictions.</li>
+          <li>Teaching Assistant for Foundations of Environmental Engineering (CIEE/EAEE E4252), Spring 2026; mentored graduate students through one-on-one tutoring.</li>
         </ul>
       </div>
 
@@ -602,8 +685,8 @@
         </div>
         <div class="timeline-org">Burns &amp; McDonnell &middot; Wallingford, CT</div>
         <ul class="timeline-details">
-          <li>Authored and submitted environmental permit applications for energy infrastructure projects, including large-scale 55 and 65 MW solar installations, battery storage, and transmission lines.</li>
-          <li>Analyzed regulatory frameworks, executed field sampling campaigns, evaluated remediation efficacy, and calculated facility potential to emit for 6 criteria and 188 hazardous air pollutants.</li>
+          <li>As Environmental Permitting Specialist: authored and submitted permit applications for energy infrastructure projects, including large-scale 55 and 65 MW solar installations, battery storage, and transmission lines.</li>
+          <li>As Remediation &amp; Air Emissions Scientist: analyzed regulatory frameworks to counsel clients, executed field sampling campaigns, evaluated remediation efficacy, and calculated facility potential to emit for 6 criteria and 188 hazardous air pollutants.</li>
         </ul>
       </div>
 
@@ -648,15 +731,16 @@
     <!-- Education -->
     <div class="education-grid fade-in">
       <div class="edu-card">
-        <div class="edu-degree">Ph.D. in Earth &amp; Environmental Engineering</div>
+        <div class="edu-degree">M.Phil. in Earth &amp; Environmental Engineering</div>
         <div class="edu-school">Columbia University</div>
-        <div class="edu-year">Expected May 2027</div>
+        <div class="edu-year">Expected December 2026</div>
+        <div class="edu-detail">GPA: 3.73</div>
       </div>
       <div class="edu-card">
         <div class="edu-degree">M.S. in Earth &amp; Environmental Engineering</div>
         <div class="edu-school">Columbia University</div>
         <div class="edu-year">February 2024</div>
-        <div class="edu-detail">GPA: 4.07 &middot; Concentration in Sustainable Energy &amp; Carbon</div>
+        <div class="edu-detail">GPA: 4.07 &middot; Concentration in Sustainable Energy &amp; Carbon; additional focuses on Data Science, Water Resources &amp; Climate Risk</div>
       </div>
       <div class="edu-card">
         <div class="edu-degree">B.S. in Chemical Engineering</div>
@@ -666,22 +750,46 @@
       </div>
     </div>
 
-    <!-- Skills -->
-    <div class="skills-bar fade-in">
-      <span class="skill-tag">Python</span>
-      <span class="skill-tag">Machine Learning</span>
-      <span class="skill-tag">Neural Networks</span>
-      <span class="skill-tag">Jupyter</span>
-      <span class="skill-tag">Git</span>
-      <span class="skill-tag">R</span>
-      <span class="skill-tag">MATLAB</span>
-      <span class="skill-tag">Data Science</span>
-      <span class="skill-tag">Climate Data</span>
-      <span class="skill-tag">Gurobi Optimization</span>
-      <span class="skill-tag">HYSYS</span>
-      <span class="skill-tag">CAD Civil3D</span>
-      <span class="skill-tag">Helioscope</span>
-      <span class="skill-tag">Technical Writing</span>
+    <!-- Skills (grouped to follow the extended resume's Technical Skills section) -->
+    <div class="skills-bar fade-in" style="display:block;">
+      <div class="skills-group">
+        <span class="skills-group-label">Languages &amp; tools</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">R</span>
+        <span class="skill-tag">xarray</span>
+        <span class="skill-tag">pandas</span>
+        <span class="skill-tag">Jupyter</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Binder</span>
+        <span class="skill-tag">MATLAB</span>
+        <span class="skill-tag">Gurobi Optimization</span>
+        <span class="skill-tag">Excel</span>
+      </div>
+      <div class="skills-group">
+        <span class="skills-group-label">Methods</span>
+        <span class="skill-tag">Neural Networks</span>
+        <span class="skill-tag">Transfer Learning</span>
+        <span class="skill-tag">Random Forest</span>
+        <span class="skill-tag">XGBoost</span>
+        <span class="skill-tag">Causal Discovery (PCMCI+)</span>
+        <span class="skill-tag">Copula-Based Spatial Analysis</span>
+        <span class="skill-tag">Calibrated Uncertainty</span>
+      </div>
+      <div class="skills-group">
+        <span class="skills-group-label">Datasets</span>
+        <span class="skill-tag">In-situ Air-Sea Flux Cruise Networks</span>
+        <span class="skill-tag">CESM Climate Model Ensembles</span>
+        <span class="skill-tag">NOAA HRRR</span>
+      </div>
+      <div class="skills-group">
+        <span class="skills-group-label">Engineering &amp; communication</span>
+        <span class="skill-tag">Helioscope</span>
+        <span class="skill-tag">HYSYS</span>
+        <span class="skill-tag">CAD Civil3D</span>
+        <span class="skill-tag">Technical Writing</span>
+        <span class="skill-tag">Public Speaking</span>
+      </div>
+      <p class="training-note">Training: Climate &amp; Geospatial Data Analysis and Machine Learning, LEAP Train-the-Trainer Bootcamp (Jan 2023) &middot; Topics in Climate Data Science, LEAP Momentum Bootcamp (May 2022)</p>
     </div>
   </div>
 </section>
@@ -690,10 +798,16 @@
 <section id="projects">
   <div class="section-inner">
     <div class="section-label fade-in">Projects</div>
-    <h2 class="section-title fade-in">Selected projects</h2>
-    <p class="section-subtitle fade-in">Coursework and research projects spanning energy policy, machine learning, and environmental modeling.</p>
+    <h2 class="section-title fade-in">Selected climate &amp; energy data projects</h2>
+    <p class="section-subtitle fade-in">Collaborative and course projects in energy systems, climate data, and machine learning.</p>
 
     <div class="projects-grid">
+      <div class="project-card fade-in">
+        <div class="project-course">NVIDIA&ndash;LEAP Center Hackathon &middot; Jun 2025 &ndash; Jan 2026</div>
+        <h3>Downscaling Climate Model Data for New York City</h3>
+        <p>Member of a 9-person coding sub-team within a 17-person group downscaling climate model data to high resolution around New York City for a hackathon at the American Museum of Natural History.</p>
+      </div>
+
       <div class="project-card fade-in">
         <div class="project-course">Energy System Economics &amp; Optimization &middot; Fall 2023</div>
         <h3>Wind Integration in ISO New England</h3>
@@ -701,17 +815,29 @@
       </div>
 
       <div class="project-card fade-in">
-        <div class="project-course">ML for Environmental Engineering &middot; Fall 2022</div>
+        <div class="project-course">ML for Environmental Engineering &amp; Science &middot; Fall 2022</div>
         <h3>Ocean Carbon Uptake</h3>
-        <p>Trained random forest, XGBoost, and neural network models on Community Earth System Model CO&#8322; data. Compared algorithm performance across four pre-processed datasets for sparse and global coverage. Published reproducible code and workflows.</p>
+        <p>Trained random forest, XGBoost, and neural network models on Community Earth System Model CO&#8322; data. Compared algorithm performance across four pre-processed datasets for sparse and global coverage. Published code using publicly available data and reproducible workflows.</p>
       </div>
 
       <div class="project-card fade-in">
         <div class="project-course">Research Computing for Earth Science &middot; Fall 2022</div>
         <h3>Arctic Ocean Acidification</h3>
-        <p>Evaluated correlations between sea ice extent and ocean acidification identified by machine learning. Established comparisons to conventional predictors including SST, salinity, and CO&#8322; partial pressure. Published interactive visualizations using Binder.</p>
+        <p>Evaluated correlations between sea ice extent and ocean acidification identified by machine learning, compared against conventional predictors including sea surface temperature, salinity, and CO&#8322; partial pressure. Published interactive code and data visualizations using Binder.</p>
       </div>
+    </div>
 
+    <h3 class="subsection-title fade-in">Talks &amp; posters</h3>
+    <ul class="talks-list fade-in">
+      <li><span class="talk-kind">Talk</span><strong>Transfer learning for air-sea flux estimation.</strong> Multiscale Machine Learning In coupled Earth System Modeling (M<sup>2</sup>LInES) Annual Meeting, Armonk, NY, June 2025.</li>
+      <li><span class="talk-kind">Poster</span><strong>Reconstructing air-sea fluxes using bulk parameterizations, in situ observations, &amp; transfer learning.</strong> Simpson, J. L., Gentine, P., Zanna, L. Accepted, American Association for the Advancement of Science (AAAS) Annual Meeting, Boston, MA, February 2024.</li>
+      <li><span class="talk-kind">Talk</span><strong>Improving parameterizations of heat and momentum air-sea fluxes.</strong> LEAP Center Year 3 Annual Meeting, NY, October 2023.</li>
+      <li><span class="talk-kind">Poster</span><strong>Improving parameterizations of heat and momentum air-sea fluxes using in situ observations, remote sensing, and machine learning.</strong> Simpson, J. L., Gentine, P., Zanna, L. LEAP Center Year 3 Annual Meeting, NY, October 2023.</li>
+      <li><span class="talk-kind">Poster</span><strong>Ocean carbon: from sparse data to full-coverage air-sea CO&#8322; flux.</strong> McKinley, G., Heimdal, T., Simpson, J. L. (presenter), Zheng, T., Long, M. LEAP Center Year 2 Annual Meeting, NY, January 2023.</li>
+    </ul>
+
+    <h3 class="subsection-title fade-in">Earlier engineering &amp; policy projects</h3>
+    <div class="projects-grid secondary">
       <div class="project-card fade-in">
         <div class="project-course">Chemical Engineering Capstone &middot; Spring 2020</div>
         <h3>Biofuel Production Plant Design</h3>
@@ -721,13 +847,19 @@
       <div class="project-card fade-in">
         <div class="project-course">Renewable Energy &amp; Decarbonizing the Grid &middot; Fall 2019</div>
         <h3>Greenhouse Gas Taxation Policy Brief</h3>
-        <p>Developed a tax model directing revenue toward low-income households, low-carbon energy incentives, and climate change mitigation. Discussed policy context, adoption pathways, and implementation strategies.</p>
+        <p>Discussed policy context, recommendation, adoption, and implementation for a tax on greenhouse gas emissions, with revenue directed to lower-income households, low-carbon energy incentives, and climate change mitigation and response.</p>
       </div>
 
       <div class="project-card fade-in">
         <div class="project-course">Green Engineering &middot; Fall 2018</div>
         <h3>Ozone Depletion Compartmental Model</h3>
         <p>Modeled chemical reaction mechanisms of ozone depletion, calculating loss coefficients and residence time of targeted depleters in a four-component stratosphere-troposphere system spanning both hemispheres.</p>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-course">Technical Writing &middot; Fall 2017</div>
+        <h3>Reforms for the U.S. Energy Sector</h3>
+        <p>Prepared and presented a proposal on policy, technology, and infrastructure changes for the U.S. electrical grid, spanning fossil fuel subsidies, investment in solar, offshore wind, wave, and tidal energy, and transmission and transit upgrades.</p>
       </div>
     </div>
   </div>
@@ -738,9 +870,9 @@
   <div class="section-inner">
     <div class="section-label fade-in">Connect</div>
     <h2 class="section-title fade-in">Let's get in touch</h2>
-    <p class="section-subtitle fade-in">Interested in collaboration, have questions about my research, or just want to connect? Feel free to reach out.</p>
+    <p class="section-subtitle fade-in">Open to conversations about climate and energy data science roles and collaborations.</p>
     <div class="connect-links fade-in">
-      <a href="mailto:jls2391@columbia.edu" class="connect-btn">
+      <a href="mailto:julia.simpson@columbia.edu" class="connect-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
         Email
       </a>
@@ -752,17 +884,13 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
         Resume
       </a>
-      <a href="./Julia_L_Simpson_CV.pdf" target="_blank" rel="noopener" class="connect-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        CV
-      </a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>&copy; 2026 Julia L. Simpson · Columbia University</p>
+  <p>&copy; 2026 Julia L. Simpson</p>
 </footer>
 
 <script>
