@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+  Personal website: Julia L. Simpson (air-sea fluxes project page)
+  Created 2026-11-11. Goal: overview, results, preprint, code, and an interactive results
+    explorer for this project. Only resume-stated facts are included; results, preprint, code,
+    and the explorer are placeholders until the preprint is posted (per Julia, 2026-11-11).
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine learning for air-sea fluxes — Julia L. Simpson</title>
+  <meta name="description" content="A hybrid physics-machine learning workflow and causal discovery for air-sea flux representation in climate models.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<nav class="site-nav" aria-label="Main">
+  <div class="wrap">
+    <a href="../" class="brand">Julia L. Simpson</a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 1h22M0 8h22M0 15h22"/></svg>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../#about">About</a></li>
+      <li><a href="../#research" aria-current="page">Research</a></li>
+      <li><a href="../#experience">Experience</a></li>
+      <li><a href="../#projects">Projects</a></li>
+      <li><a href="../resume-tour.html">Resume Tour</a></li>
+      <li><a href="../#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <header class="page-head">
+    <div class="wrap">
+      <p class="crumb"><a href="../#research">Research</a></p>
+      <h1>Machine learning for air&#8209;sea fluxes</h1>
+      <p class="lede">Addressing oceanographic data scarcity in how climate models represent air-sea fluxes.</p>
+      <p class="status-note">Paper drafting is in progress. Results, the preprint, the code repository, and an interactive results explorer will be published here with the posted preprint.</p>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <section class="page-section" aria-labelledby="overview-h">
+      <div class="two-col">
+        <h2 id="overview-h">Overview</h2>
+        <div class="prose">
+          <p>Observations of air-sea fluxes are scarce, which limits how well climate models represent the exchange of heat and momentum between ocean and atmosphere.</p>
+          <p>This project develops a hybrid physics&ndash;machine learning workflow that:</p>
+          <ul class="bullets">
+            <li>trains ensembles of neural networks on 3 million synthetic samples,</li>
+            <li>fine-tunes them via transfer learning to ~10,000 in-situ observations, and</li>
+            <li>employs causal discovery methods (PCMCI+) to illuminate directional relationships between meteorological drivers and air-sea fluxes, enabling physically grounded interpretation of machine learning predictions.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" aria-labelledby="results-h">
+      <div class="two-col">
+        <h2 id="results-h">Results</h2>
+        <div class="placeholder">
+          <strong>Results forthcoming</strong>
+          Paper drafting is in progress. Results will be shared with the posted preprint.
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" aria-labelledby="explore-h">
+      <div class="two-col">
+        <h2 id="explore-h">Explore the results</h2>
+        <div class="placeholder tall">
+          <strong>Interactive explorer forthcoming</strong>
+          An interactive view of the results will be released with the preprint.
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" aria-labelledby="links-h">
+      <div class="two-col">
+        <h2 id="links-h">Paper &amp; code</h2>
+        <ul class="link-list">
+          <li><span>Preprint</span><span class="pending">Paper drafting in progress</span></li>
+          <li><span>Code repository</span><span class="pending">To be published with the preprint</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="page-section" aria-labelledby="talks-h">
+      <div class="two-col">
+        <h2 id="talks-h">Presentations</h2>
+        <ul class="talks">
+          <li><span class="kind">Talk</span> <span><cite>Transfer learning for air-sea flux estimation.</cite> Multiscale Machine Learning In coupled Earth System Modeling (M<sup>2</sup>LInES) Annual Meeting, Armonk, NY, June 2025.</span></li>
+          <li><span class="kind">Poster</span> <span><cite>Reconstructing air-sea fluxes using bulk parameterizations, in situ observations, &amp; transfer learning.</cite> Simpson, J. L., Gentine, P., Zanna, L. Accepted, American Association for the Advancement of Science (AAAS) Annual Meeting, Boston, MA, February 2024.</span></li>
+          <li><span class="kind">Talk</span> <span><cite>Improving parameterizations of heat and momentum air-sea fluxes.</cite> LEAP Center Year 3 Annual Meeting, NY, October 2023.</span></li>
+          <li><span class="kind">Poster</span> <span><cite>Improving parameterizations of heat and momentum air-sea fluxes using in situ observations, remote sensing, and machine learning.</cite> Simpson, J. L., Gentine, P., Zanna, L. LEAP Center Year 3 Annual Meeting, NY, October 2023.</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+<footer class="site-foot">
+  <div class="wrap">&copy; 2026 Julia L. Simpson</div>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

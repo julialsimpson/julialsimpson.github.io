@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<!--
+  Personal website: Julia L. Simpson (Resume Tour)
+  Created 2026-11-11. Goal: a guided, step-by-step walk through the resume, with each stop
+    linking to the fuller page or section on the site.
+  Decisions:
+    - Content is taken from the Oct 2026 one-page and extended resumes only.
+    - Stops are written into the HTML so the full resume is readable without JavaScript;
+      the script then shows one stop at a time (tabs + previous/next + arrow keys) and
+      keeps the current stop in the URL hash so a specific stop can be linked.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Tour — Julia L. Simpson</title>
+  <meta name="description" content="A guided tour through Julia L. Simpson's resume: climate and energy data science research, engineering consulting, education, and skills.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Main">
+  <div class="wrap">
+    <a href="./" class="brand">Julia L. Simpson</a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 1h22M0 8h22M0 15h22"/></svg>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="./#about">About</a></li>
+      <li><a href="./#research">Research</a></li>
+      <li><a href="./#experience">Experience</a></li>
+      <li><a href="./#projects">Projects</a></li>
+      <li><a href="resume-tour.html" aria-current="page">Resume Tour</a></li>
+      <li><a href="./#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <header class="page-head">
+    <div class="wrap">
+      <h1>Resume tour</h1>
+      <p class="lede">A guided walk through my resume, one stop at a time. Each stop links to more detail elsewhere on the site.</p>
+      <div class="actions">
+        <a class="btn btn-line" href="Julia_L_Simpson_Resume.pdf" target="_blank" rel="noopener">Download the resume (PDF)</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="band"><div class="wrap">
+    <div class="tour">
+      <ol class="tour-stops" role="tablist" aria-label="Resume stops" hidden></ol>
+
+      <div class="tour-body">
+        <section class="tour-panel" id="summary" data-label="Summary">
+          <p class="when">Summary</p>
+          <h2>Climate and energy data science</h2>
+          <p class="prose">National Defense Science and Engineering Graduate (NDSEG) Fellow with expertise in climate and energy data analysis, machine learning, and scientific communication. Passionate about advancing climate resilience, accelerating the energy transition, and integrating science and policy. 6+ years of combined research and engineering consulting experience.</p>
+          <p class="see"><a href="./#about">About me</a></p>
+        </section>
+
+        <section class="tour-panel" id="dlr" data-label="Research: wind &amp; DLR">
+          <p class="when">Aug 2022 &ndash; present</p>
+          <h2>Wind energy &amp; dynamic line rating</h2>
+          <p class="where">Graduate Researcher (Ph.D. Candidate), Columbia University, New York, NY</p>
+          <ul class="bullets">
+            <li>Applies spatial analysis to develop a risk-mitigation framework for wind energy along transmission corridors, where the same wind that drives generation also cools the line and raises its dynamic line rating (DLR), so transfer capacity peaks just as wind output does.</li>
+            <li>Predicts wind speed between sparse measurement points, forecasts with calibrated confidence intervals, and culminates in sensor-placement recommendations to improve safety and reduce curtailment.</li>
+          </ul>
+          <p class="see"><a href="research/dynamic-line-rating.html">Project page</a></p>
+        </section>
+
+        <section class="tour-panel" id="air-sea" data-label="Research: air-sea fluxes">
+          <p class="when">Aug 2022 &ndash; present</p>
+          <h2>Machine learning for air&#8209;sea fluxes</h2>
+          <p class="where">Graduate Researcher (Ph.D. Candidate), Columbia University, New York, NY</p>
+          <ul class="bullets">
+            <li>Addresses oceanographic observational data scarcity in air-sea flux representation in climate modeling by developing a hybrid physics&ndash;machine learning workflow using ensembles of neural networks trained on 3 million synthetic samples, then fine-tuned via transfer learning to ~10,000 in-situ observations.</li>
+            <li>Employs causal discovery methods (PCMCI+) to illuminate directional relationships between meteorological drivers and air-sea fluxes, enabling physically grounded interpretation of machine learning predictions.</li>
+          </ul>
+          <p class="see"><a href="research/air-sea-fluxes.html">Project page</a></p>
+        </section>
+
+        <section class="tour-panel" id="consulting" data-label="Burns &amp; McDonnell">
+          <p class="when">Aug 2020 &ndash; Dec 2022</p>
+          <h2>Assistant Chemical Engineer</h2>
+          <p class="where">Burns &amp; McDonnell, Wallingford, CT</p>
+          <ul class="bullets">
+            <li>As Environmental Permitting Specialist: authored and submitted permit applications for energy infrastructure projects, including large-scale 55 and 65 megawatt (MW) solar installations, battery storage, and transmission lines.</li>
+            <li>As Remediation &amp; Air Emissions Scientist: analyzed regulatory frameworks to counsel clients on relevant requirements; executed field sampling campaigns, analyzed environmental data to evaluate remediation efficacy; and calculated facility potential to emit for 6 criteria and 188 hazardous air pollutants.</li>
+          </ul>
+          <p class="see"><a href="./#experience">Full experience</a></p>
+        </section>
+
+        <section class="tour-panel" id="early" data-label="Earlier roles">
+          <p class="when">Sep 2017 &ndash; Mar 2020</p>
+          <h2>Internships and undergraduate research</h2>
+          <ul class="bullets">
+            <li><strong>Sustainability Engineering Intern, Office of Sustainability, St. Louis, MO</strong> (Jan &ndash; Mar 2020). Collaborated on a team of 5 student interns to design 2.5 MW of solar installations for the city of St. Louis, developing a comprehensive proposal integrating SolSmart policy and Helioscope engineering design.</li>
+            <li><strong>Chemical Engineering Intern, Burns &amp; McDonnell, Kansas City, MO</strong> (May &ndash; Aug 2019). Consulted within the Process Engineering group in the Energy Global Practice on 11 different projects, focusing on water quality, constituent environmental standards, technical design, and process analysis.</li>
+            <li><strong>Research Assistant, Center for Aerosol Science &amp; Engineering, St. Louis, MO</strong> (Sep 2017 &ndash; Dec 2018). Processed PM2.5 Teflon filters using microwave-aided acid digestion and inductively coupled plasma mass spectrometry for an air quality study; developed, tested, and validated a revised Standard Operating Procedure for air toxic metals analysis on 18 elements.</li>
+          </ul>
+          <p class="see"><a href="./#experience">Full experience</a></p>
+        </section>
+
+        <section class="tour-panel" id="teaching" data-label="Teaching &amp; mentoring">
+          <p class="when">Dec 2016 &ndash; Spring 2026</p>
+          <h2>Teaching and mentoring</h2>
+          <ul class="bullets">
+            <li><strong>Teaching Assistant, Columbia University (CIEE/EAEE E4252)</strong> (Spring 2026). Supported instruction for Foundations of Environmental Engineering, focusing on mass balances, water and air quality, and environmental treatment processes; mentored graduate students through one-on-one tutoring, drawing on consulting experience to connect engineering fundamentals to regulatory and real-world practice.</li>
+            <li><strong>Engineering Course Assistant &amp; Tutor, Washington University in St. Louis</strong> (Dec 2016 &ndash; May 2018). Taught class sections of about 40 first-year engineering students through collaborative, project-based learning; tutored 13 college students in Calculus III, Differential Equations, Physics, and chemical engineering courses.</li>
+          </ul>
+        </section>
+
+        <section class="tour-panel" id="education" data-label="Education">
+          <p class="when">2016 &ndash; 2026</p>
+          <h2>Education</h2>
+          <ul class="bullets">
+            <li><strong>M.Phil., Earth and Environmental Engineering, Columbia University.</strong> Expected December 2026. GPA 3.73.</li>
+            <li><strong>M.S., Earth &amp; Environmental Engineering, Columbia University.</strong> February 2024. GPA 4.07. Concentration in Sustainable Energy &amp; Carbon with additional focuses on Data Science, Water Resources &amp; Climate Risk.</li>
+            <li><strong>B.S., Chemical Engineering (Cum Laude), Washington University in St. Louis.</strong> May 2020. GPA 3.73. Minors in Energy Engineering, Environmental Engineering, and Psychology-Neuroscience-Philosophy.</li>
+          </ul>
+        </section>
+
+        <section class="tour-panel" id="skills" data-label="Technical skills">
+          <p class="when">Technical skills</p>
+          <h2>Tools, methods, and data</h2>
+          <ul class="bullets">
+            <li>Python, R, xarray, pandas, neural networks, transfer learning, random forest, eXtreme Gradient Boosting (XGBoost).</li>
+            <li>Statistical and spatial methods: causal discovery (PCMCI+); copula-based spatial analysis; and calibrated uncertainty.</li>
+            <li>Datasets: in-situ networks from research cruises targeting air-sea flux measurements; Community Earth System Model (CESM) climate model ensembles; and the NOAA High-Resolution Rapid Refresh (HRRR) atmospheric model.</li>
+            <li>Training: Climate &amp; Geospatial Data Analysis and Machine Learning, LEAP Train-the-Trainer Bootcamp (Jan 2023); Topics in Climate Data Science, LEAP Momentum Bootcamp (May 2022).</li>
+          </ul>
+          <p class="see"><a href="./#projects">Climate &amp; energy data projects</a></p>
+        </section>
+
+        <section class="tour-panel" id="awards" data-label="Awards">
+          <p class="when">2022 &ndash; present</p>
+          <h2>Awards</h2>
+          <ul class="bullets">
+            <li><strong>National Defense Science and Engineering Graduate Fellow</strong> (Sep 2024 &ndash; present). Earned a competitive three-year graduate fellowship from the Department of Defense, awarded through the Office of the Under Secretary for Research and Engineering and the military services (award rate under 6.3%).</li>
+            <li><strong>&ldquo;What We Do Matters&rdquo; and &ldquo;We Invest in a Better World,&rdquo; Burns &amp; McDonnell</strong> (Jun 2022). Two company culture recognitions for an innovative solution to a project obstacle and dedication to a client.</li>
+          </ul>
+        </section>
+
+        <section class="tour-panel" id="leadership" data-label="Leadership &amp; activities">
+          <p class="when">2016 &ndash; present</p>
+          <h2>Leadership and activities</h2>
+          <ul class="bullets">
+            <li><strong>Graduate Earth &amp; Environmental Engineering Network</strong> (May 2025 &ndash; present). Chair of the Social Committee, organizing events and growing a new graduate student organization.</li>
+            <li><strong>NVIDIA&ndash;LEAP Center Hackathon Collaboration</strong> (Jun 2025 &ndash; Jan 2026). Member of a 9-person coding sub-team within a 17-person group downscaling climate model data to high resolution around New York City for a hackathon at the American Museum of Natural History.</li>
+            <li><strong>Burns &amp; McDonnell</strong> (Aug 2020 &ndash; Dec 2022). Representative on the Microplastics Team at the Interstate Technology Regulatory Council; Diversity, Equity, &amp; Inclusion Lead for the New England regional offices; founding member of the Wallingford Green Team.</li>
+            <li><strong>Relay For Life</strong> (Aug 2016 &ndash; Apr 2020). Chaired the Fundraising committee within a 50-person Steering committee, coordinating benefit nights with local businesses for the American Cancer Society and contributing to registration of over 1,300 people.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <div class="tour-nav" hidden>
+      <button class="btn btn-line" data-step="-1">Previous</button>
+      <span class="tour-count" aria-live="polite"></span>
+      <button class="btn btn-solid" data-step="1">Next</button>
+    </div>
+  </div></div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">&copy; 2026 Julia L. Simpson</div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+  // Turns the stacked resume sections into a one-at-a-time tour.
+  (function () {
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.tour-panel'));
+    var list = document.querySelector('.tour-stops');
+    var nav = document.querySelector('.tour-nav');
+    var count = nav.querySelector('.tour-count');
+    var prev = nav.querySelector('[data-step="-1"]');
+    var next = nav.querySelector('[data-step="1"]');
+    var tabs = [];
+    var current = 0;
+
+    panels.forEach(function (panel, i) {
+      var li = document.createElement('li');
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.id = 'tab-' + panel.id;
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-controls', panel.id);
+      b.innerHTML = panel.getAttribute('data-label');
+      b.addEventListener('click', function () { show(i, true); });
+      b.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); show(Math.min(i + 1, panels.length - 1), true, true); }
+        if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); show(Math.max(i - 1, 0), true, true); }
+      });
+      li.appendChild(b); list.appendChild(li); tabs.push(b);
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('aria-labelledby', b.id);
+    });
+    list.hidden = false; nav.hidden = false;
+
+    function show(i, updateHash, focusTab) {
+      current = i;
+      panels.forEach(function (p, j) {
+        p.hidden = j !== i;
+        tabs[j].setAttribute('aria-selected', j === i ? 'true' : 'false');
+        tabs[j].tabIndex = j === i ? 0 : -1;
+      });
+      panels[i].classList.remove('entering'); void panels[i].offsetWidth; panels[i].classList.add('entering');
+      prev.disabled = i === 0;
+      next.disabled = i === panels.length - 1;
+      count.textContent = 'Stop ' + (i + 1) + ' of ' + panels.length;
+      if (focusTab) tabs[i].focus();
+      if (updateHash && history.replaceState) history.replaceState(null, '', '#' + panels[i].id);
+      // keep the active tab visible in the horizontal strip on small screens
+      if (tabs[i].scrollIntoView && window.innerWidth <= 900) tabs[i].scrollIntoView({ block: 'nearest', inline: 'center' });
+    }
+
+    prev.addEventListener('click', function () { show(Math.max(current - 1, 0), true); });
+    next.addEventListener('click', function () { show(Math.min(current + 1, panels.length - 1), true); });
+
+    var start = panels.findIndex(function (p) { return '#' + p.id === location.hash; });
+    show(start < 0 ? 0 : start, false);
+  })();
+</script>
+</body>
+</html>
