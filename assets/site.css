@@ -16,6 +16,10 @@
     sage-deep  #4E6E63  link/text use of the blue (5.1:1 on paper)
   The palette's olive is 4.1:1 on cream, so it is used for large type and fills only.
   Moss, sage, clay and blush never carry text; they fail contrast as text colors.
+  Modified 2026-11-11 (pm): green made more prominent per Julia. Olive navigation bar; olive,
+    light-moss (#DCD8B4, derived from moss) and deep-green (ink) section bands. Checked:
+    paper on olive 4.9:1, ink on light moss 7.9:1, olive-text on light moss 4.8:1,
+    olive headings on light moss 3.7:1 (large text only). Added awards and scrolling-tour styles.
 */
 
 :root {
@@ -29,7 +33,9 @@
   --ink: #3A3C22;
   --olive-text: #5A5C36;
   --sage-deep: #4E6E63;
+  --moss-tint: #DCD8B4;
   --rule: rgba(107, 109, 67, 0.28);
+  --rule-light: rgba(250, 243, 234, 0.32);
 
   --serif: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
   --sans: 'Jost', 'Avenir Next', 'Segoe UI', sans-serif;
@@ -70,16 +76,17 @@ p + p { margin-top: 1rem; }
 /* ---------- Navigation ---------- */
 .site-nav {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(250, 243, 234, 0.94);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--rule);
+  background: var(--olive);
+  border-bottom: 1px solid rgba(58, 60, 34, 0.4);
 }
 .site-nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
-.brand { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--olive); text-decoration: none; }
+.brand { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; color: var(--paper); text-decoration: none; }
+.brand:hover { color: var(--cream); }
 .nav-links { display: flex; gap: 1.75rem; list-style: none; }
-.nav-links a { font-size: 0.95rem; color: var(--ink); text-decoration: none; padding: 0.25rem 0; }
-.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--olive); box-shadow: inset 0 -1px 0 var(--moss); }
-.nav-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 0.5rem; color: var(--olive); }
+.nav-links a { font-size: 0.95rem; color: var(--paper); text-decoration: none; padding: 0.25rem 0; }
+.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--paper); box-shadow: inset 0 -1px 0 var(--blush); }
+.nav-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 0.5rem; color: var(--paper); }
+.site-nav :focus-visible { outline-color: var(--paper); }
 .nav-toggle svg { display: block; }
 
 /* ---------- Buttons ---------- */
@@ -97,10 +104,16 @@ p + p { margin-top: 1rem; }
 /* ---------- Sections ---------- */
 .band { padding: 5.5rem 0; }
 .band-cream { background: var(--cream); }
-.band-olive { background: var(--olive); color: var(--paper); }
-.band-olive h2 { color: var(--paper); }
+.band-moss { background: var(--moss-tint); }
+.band-moss a { color: var(--ink); }
+.band-olive, .band-ink { background: var(--olive); color: var(--paper); }
+.band-ink { background: var(--ink); }
+.band-olive h2, .band-olive h3, .band-ink h2, .band-ink h3 { color: var(--paper); }
+.band-olive a, .band-ink a { color: var(--paper); }
+.band-olive :focus-visible, .band-ink :focus-visible { outline-color: var(--paper); }
+.band-moss .section-intro, .band-moss .meta, .band-moss .rows .context, .band-moss .talks .kind { color: var(--olive-text); }
 .section-intro { max-width: var(--measure); margin-bottom: 3rem; color: var(--olive-text); }
-.band-olive .section-intro { color: var(--paper); }
+.band-olive .section-intro, .band-ink .section-intro { color: var(--paper); }
 
 /* ---------- Hero ---------- */
 .hero { padding: 4.5rem 0 0; overflow: hidden; }
@@ -123,6 +136,8 @@ p + p { margin-top: 1rem; }
 /* ---------- About ---------- */
 .about-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 4rem; }
 .facts { border-top: 1px solid var(--rule); }
+.band-olive .facts, .band-olive .facts div { border-color: var(--rule-light); }
+.band-olive .facts dt { color: var(--paper); font-family: var(--serif); font-style: italic; font-size: 1.1rem; }
 .facts div { padding: 0.9rem 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; }
 .facts dt { font-size: 0.9rem; color: var(--olive-text); }
 .facts dd { font-size: 0.98rem; }
@@ -131,24 +146,24 @@ p + p { margin-top: 1rem; }
 .trio { display: grid; grid-template-columns: repeat(3, 1fr); }
 .trio > div { padding: 0 2rem; border-left: 1px solid var(--rule); }
 .trio > div:first-child { padding-left: 0; border-left: 0; }
-.trio svg { color: var(--olive); margin-bottom: 1rem; }
+.trio .icon { width: 3.25rem; height: 3.25rem; border-radius: 50%; background: var(--olive); color: var(--paper); display: grid; place-items: center; margin-bottom: 1.1rem; }
 .trio p { font-size: 0.98rem; }
 
 /* ---------- Research entries ---------- */
 .research-list { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; }
-.research-entry { border-top: 2px solid var(--moss); padding-top: 1.5rem; }
+.research-entry { border-top: 2px solid var(--olive); padding-top: 1.5rem; }
 .research-entry p { font-size: 1rem; }
 .research-entry .more { display: inline-block; margin-top: 1.25rem; font-weight: 500; }
 .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.1rem; list-style: none; }
-.tags li { font-size: 0.82rem; color: var(--olive-text); border: 1px solid var(--rule); border-radius: 999px; padding: 0.15rem 0.7rem; }
+.tags li { font-size: 0.82rem; color: var(--paper); background: var(--olive); border-radius: 999px; padding: 0.2rem 0.75rem; }
 
 /* ---------- Experience timeline ---------- */
-.timeline { list-style: none; border-left: 1px solid var(--moss); margin-left: 0.3rem; }
+.timeline { list-style: none; border-left: 2px solid var(--olive); margin-left: 0.3rem; }
 .timeline > li { position: relative; padding: 0 0 2.5rem 2rem; }
 .timeline > li:last-child { padding-bottom: 0; }
 .timeline > li::before {
   content: ''; position: absolute; left: -5px; top: 0.6rem;
-  width: 9px; height: 9px; border-radius: 50%; background: var(--cream); border: 1px solid var(--olive);
+  width: 11px; height: 11px; border-radius: 50%; background: var(--paper); border: 2px solid var(--olive); left: -6.5px;
 }
 .timeline > li.current::before { background: var(--clay); border-color: var(--clay); }
 .timeline .when { font-size: 0.9rem; color: var(--olive-text); }
@@ -160,7 +175,7 @@ p + p { margin-top: 1rem; }
 
 .subhead { font-family: var(--serif); font-size: 1.75rem; font-weight: 500; color: var(--olive); margin: 4rem 0 1.5rem; }
 .edu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-.edu > div { border-top: 1px solid var(--olive); padding-top: 1rem; }
+.edu > div { border-top: 2px solid var(--olive); padding-top: 1rem; }
 .edu h3 { font-size: 1.3rem; }
 .edu p { font-size: 0.95rem; }
 
@@ -168,6 +183,13 @@ p + p { margin-top: 1rem; }
 .skills div { display: grid; grid-template-columns: 13rem 1fr; gap: 1.5rem; padding: 0.9rem 0; border-bottom: 1px solid var(--rule); }
 .skills dt { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--olive); }
 .skills dd { font-size: 0.98rem; }
+
+/* ---------- Awards ---------- */
+.awards { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3.5rem; }
+.awards article { border-top: 1px solid var(--rule-light); padding-top: 1.5rem; }
+.awards .when { font-size: 0.95rem; }
+.awards h3 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); font-weight: 500; margin: 0.3rem 0 0.75rem; }
+.awards .lead h3 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); }
 
 /* ---------- Projects ---------- */
 .rows { list-style: none; border-top: 1px solid var(--rule); }
@@ -193,23 +215,27 @@ details.more-projects[open] > summary::after { content: '\2212'; }
 
 /* ---------- Contact ---------- */
 .contact-links { display: flex; flex-wrap: wrap; gap: 0.85rem; }
-.band-olive .btn { border-color: var(--paper); color: var(--paper); }
-.band-olive .btn:hover { background: var(--paper); color: var(--olive); }
+.band-olive .btn, .band-ink .btn { border-color: var(--paper); color: var(--paper); background: transparent; }
+.band-olive .btn:hover, .band-ink .btn:hover { background: var(--paper); color: var(--ink); }
 
-footer.site-foot { background: var(--ink); color: var(--cream); padding: 2rem 0; font-size: 0.9rem; }
+footer.site-foot { background: var(--ink); color: var(--cream); padding: 2rem 0; font-size: 0.9rem; border-top: 1px solid rgba(250, 243, 234, 0.15); }
 footer.site-foot a { color: var(--cream); }
 
 /* ---------- Project pages ---------- */
-.page-head { padding: 4.5rem 0 3rem; border-bottom: 1px solid var(--rule); }
+.page-head { padding: 4.5rem 0 3.5rem; background: var(--olive); color: var(--paper); }
+.page-head h1 { color: var(--paper); }
+.page-head a { color: var(--paper); }
+.page-head :focus-visible { outline-color: var(--paper); }
 .page-head .crumb { font-size: 0.9rem; margin-bottom: 1.25rem; }
 .page-head h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); max-width: 24ch; }
 .prose > ul { margin-top: 0.6rem; }
 .page-head .lede { margin-top: 1.25rem; }
 .status-note {
   margin-top: 2rem; max-width: var(--measure); padding: 1rem 1.25rem;
-  border-left: 3px solid var(--clay); background: var(--cream); font-size: 0.98rem;
+  border-left: 3px solid var(--blush); background: rgba(250, 243, 234, 0.12); font-size: 0.98rem;
 }
 .page-section { padding: 3.5rem 0; border-bottom: 1px solid var(--rule); }
+.page-section h2 { color: var(--olive); }
 .page-section:last-of-type { border-bottom: 0; }
 .page-section h2 { font-size: 2rem; }
 .two-col { display: grid; grid-template-columns: 14rem 1fr; gap: 2.5rem; }
@@ -223,28 +249,58 @@ footer.site-foot a { color: var(--cream); }
 .link-list li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--rule); }
 .link-list .pending { color: var(--olive-text); font-style: italic; font-size: 0.95rem; white-space: nowrap; }
 
-/* ---------- Resume tour ---------- */
-.tour { display: grid; grid-template-columns: 17rem 1fr; gap: 3rem; align-items: start; }
-.tour-stops { list-style: none; border-left: 1px solid var(--moss); position: sticky; top: 6rem; }
-.tour-stops button {
-  display: block; width: 100%; text-align: left; background: none; border: 0; cursor: pointer;
-  font-family: var(--sans); font-size: 0.95rem; color: var(--olive-text);
-  padding: 0.55rem 0 0.55rem 1.25rem; margin-left: -1px; border-left: 2px solid transparent;
+/* ---------- Resume tour (scrolling, with map) ---------- */
+.tour-head { background: var(--olive); color: var(--paper); padding: 3.5rem 0 2.5rem; }
+.tour-head h1 { color: var(--paper); font-size: clamp(2.6rem, 5.5vw, 4rem); }
+.tour-head .lede { margin-top: 0.75rem; }
+.tour-head .btn { border-color: var(--paper); color: var(--paper); }
+.tour-head .btn:hover { background: var(--paper); color: var(--ink); }
+.tour-head :focus-visible { outline-color: var(--paper); }
+.tour-map { margin-top: 2rem; }
+.tour-map svg {
+  display: block; width: 100%; height: auto;
+  /* fade the cropped map edges into the band instead of a hard rectangle */
+  -webkit-mask-image: radial-gradient(ellipse 72% 70% at 50% 46%, #000 66%, transparent 100%);
+          mask-image: radial-gradient(ellipse 72% 70% at 50% 46%, #000 66%, transparent 100%);
 }
-.tour-stops button:hover { color: var(--olive); }
-.tour-stops button[aria-selected="true"] { color: var(--olive); font-weight: 500; border-left-color: var(--olive); }
-.tour-panel { min-height: 26rem; }
-.tour-panel .when { font-size: 0.95rem; color: var(--olive-text); }
-.tour-panel h2 { margin: 0.25rem 0 0.25rem; }
-.tour-panel .where { color: var(--olive-text); margin-bottom: 1.5rem; }
-.tour-panel .see { margin-top: 1.5rem; font-weight: 500; }
-.tour-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); }
-.tour-nav button { font-family: var(--sans); }
-.tour-nav button[disabled] { opacity: 0.35; cursor: default; }
-.tour-count { font-size: 0.9rem; color: var(--olive-text); }
+.tour-map .state { fill: rgba(250, 243, 234, 0.08); stroke: rgba(250, 243, 234, 0.38); stroke-width: 0.8; }
+.tour-map .route { fill: none; stroke: var(--blush); stroke-width: 2; stroke-linecap: round; }
+.tour-map .pin circle { fill: var(--clay); stroke: var(--paper); stroke-width: 2.5; transition: r 0.25s; }
+.tour-map .pin text { fill: var(--paper); font-family: var(--sans); font-size: 17px; font-weight: 500; }
+.tour-map .pin .yrs { font-family: var(--serif); font-style: italic; font-size: 16px; font-weight: 500; }
+.tour-map .pin:hover circle, .tour-map .pin.active circle { r: 11; fill: var(--blush); }
+.tour-map .pin:focus-visible { outline: none; }
+.tour-map .pin:focus-visible circle { stroke: var(--ink); stroke-width: 3; }
+.tour-map figcaption { font-size: 0.85rem; margin-top: 0.5rem; color: var(--cream); }
 @media (prefers-reduced-motion: no-preference) {
-  .tour-panel.entering { animation: rise 0.45s cubic-bezier(.2,.7,.2,1) both; }
+  .tour-map .route { stroke-dasharray: 2400; stroke-dashoffset: 2400; animation: draw 2.6s ease-out 0.3s forwards; }
 }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+.tour { display: grid; grid-template-columns: 15rem 1fr; gap: 3.5rem; align-items: start; }
+.tour-index { position: sticky; top: 6rem; }
+.tour-index, .tour-body { min-width: 0; } /* lets the phone stop-strip scroll instead of widening the grid */
+.tour-index ol { list-style: none; border-left: 2px solid var(--moss-tint); }
+.tour-index a {
+  display: block; padding: 0.45rem 0 0.45rem 1.1rem; margin-left: -2px; border-left: 2px solid transparent;
+  font-size: 0.93rem; color: var(--olive-text); text-decoration: none; line-height: 1.4;
+}
+.tour-index a:hover { color: var(--olive); }
+.tour-index a[aria-current="true"] { color: var(--olive); font-weight: 500; border-left-color: var(--olive); }
+.tour-index .place { display: block; font-size: 0.8rem; font-style: italic; font-family: var(--serif); }
+.stop { padding: 0 0 4rem; margin-bottom: 4rem; border-bottom: 1px solid var(--rule); }
+.stop:last-child { border-bottom: 0; margin-bottom: 0; }
+.stop .when { font-size: 0.95rem; color: var(--olive-text); }
+.stop h2 { margin: 0.2rem 0 0.2rem; }
+.stop .where { color: var(--olive-text); margin-bottom: 1.25rem; }
+.stop h3 { font-size: 1.3rem; margin-top: 1.5rem; }
+.stop .see { margin-top: 1.25rem; font-weight: 500; }
+.visual-slot {
+  aspect-ratio: 16 / 7; margin-bottom: 1.75rem; border-radius: 4px;
+  background: var(--moss-tint); border: 1px dashed var(--olive);
+  display: grid; place-items: center; text-align: center; color: var(--olive-text); font-size: 0.92rem;
+}
+.visual-slot span { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--olive); display: block; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
@@ -257,16 +313,27 @@ footer.site-foot a { color: var(--cream); }
   .trio > div:first-child { padding-top: 0; border-top: 0; }
   .rows > li, .skills div, .two-col { grid-template-columns: 1fr; gap: 0.5rem; }
   .tour { grid-template-columns: 1fr; gap: 2rem; }
-  .tour-stops { position: static; display: flex; overflow-x: auto; border-left: 0; border-bottom: 1px solid var(--moss); }
-  .tour-stops button { white-space: nowrap; padding: 0.6rem 0.9rem; margin: 0 0 -1px; border-left: 0; border-bottom: 2px solid transparent; }
-  .tour-stops button[aria-selected="true"] { border-bottom-color: var(--olive); }
+  .awards { grid-template-columns: 1fr; gap: 2.5rem; }
+  .tour-index { top: 4rem; z-index: 20; background: var(--paper); margin: 0 -1.5rem; padding: 0 1.5rem; border-bottom: 1px solid var(--rule); }
+  .tour-index ol { display: flex; overflow-x: auto; border-left: 0; scrollbar-width: none; }
+  .tour-index a { white-space: nowrap; padding: 0.75rem 0.9rem; margin: 0 0 -1px; border-left: 0; border-bottom: 2px solid transparent; }
+  .tour-index a[aria-current="true"] { border-bottom-color: var(--olive); }
+  .tour-index .place { display: none; }
+  .stop { scroll-margin-top: 7.5rem; }
+  .tour-map .pin text { font-size: 32px; }
+  .tour-map .pin .yrs { display: none; }
+  .tour-map .pin circle { r: 13; stroke-width: 4; }
+  .tour-map .pin:hover circle, .tour-map .pin.active circle { r: 17; }
+  .tour-map .route { stroke-width: 3.5; }
+  .tour-map .pin .st { display: none; }
+  .visual-slot { aspect-ratio: 4 / 3; }
 }
 @media (max-width: 680px) {
   .nav-toggle { display: block; }
   .nav-links { display: none; }
   .nav-links.open {
     display: flex; flex-direction: column; gap: 0; position: absolute; top: 4rem; left: 0; right: 0;
-    background: var(--paper); border-bottom: 1px solid var(--rule); padding: 0.5rem 1.5rem 1rem;
+    background: var(--olive); border-bottom: 1px solid rgba(58, 60, 34, 0.4); padding: 0.5rem 1.5rem 1rem;
   }
   .nav-links.open a { display: block; padding: 0.7rem 0; }
   .band { padding: 4rem 0; }

@@ -6,6 +6,9 @@
   Modified 2026-11-11: redesign to the green-and-cream palette; moved styles to assets/site.css;
     hero graphic recolored and set in an arch that sits on the page; links to the new
     research project pages and Resume Tour; earlier projects moved into a disclosure.
+  Modified 2026-11-11 (pm): green made more prominent (olive About and Awards bands, light-moss
+    Research and Projects bands, deep-green Contact); added Ph.D. Candidate to credentials;
+    added an Awards section (NDSEG Fellowship; Burns & McDonnell recognitions).
 -->
 <html lang="en">
 <head>
@@ -29,6 +32,7 @@
     <ul class="nav-links" id="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#research">Research</a></li>
+      <li><a href="#awards">Awards</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="resume-tour.html">Resume Tour</a></li>
@@ -131,13 +135,13 @@
 
           <!-- Air-sea fluxes -->
           <g stroke-width="1.7" stroke-linecap="round" fill="none">
-            <line x1="296" y1="326" x2="296" y2="282" stroke="#CF7D65" marker-end="url(#tip)"/>
-            <path d="M341 326 Q336 316 341 306 Q346 296 341 286 L341 282" stroke="#4E6E63" stroke-dasharray="4 2" marker-end="url(#tip)"/>
+            <line x1="286" y1="326" x2="286" y2="282" stroke="#CF7D65" marker-end="url(#tip)"/>
+            <path d="M330 326 Q325 316 330 306 Q335 296 330 286 L330 282" stroke="#4E6E63" stroke-dasharray="4 2" marker-end="url(#tip)"/>
             <line x1="384" y1="280" x2="384" y2="324" stroke="#6B6D43" marker-end="url(#tip)"/>
           </g>
-          <g font-family="Jost, sans-serif" font-size="11.5" font-weight="500" text-anchor="middle">
-            <text fill="#A2553F"><tspan x="296" y="252">Sensible</tspan><tspan x="296" dy="13">heat</tspan></text>
-            <text fill="#4E6E63"><tspan x="340" y="252">Latent</tspan><tspan x="340" dy="13">heat</tspan></text>
+          <g font-family="Jost, sans-serif" font-size="11" font-weight="500" text-anchor="middle">
+            <text fill="#A2553F"><tspan x="286" y="252">Sensible</tspan><tspan x="286" dy="13">heat</tspan></text>
+            <text fill="#4E6E63"><tspan x="329" y="252">Latent</tspan><tspan x="329" dy="13">heat</tspan></text>
             <text x="382" y="265" fill="#5A5C36">Momentum</text>
           </g>
         </g>
@@ -149,7 +153,7 @@
 </header>
 
 <!-- ABOUT -->
-<section id="about" class="band band-cream">
+<section id="about" class="band band-olive">
   <div class="wrap about-grid">
     <div class="prose">
       <h2>Climate and energy data science, grounded in engineering practice</h2>
@@ -162,7 +166,7 @@
       <div><dt>Location</dt><dd>New York, NY</dd></div>
       <div><dt>Education</dt><dd>M.Phil. and M.S., Earth &amp; Environmental Engineering, Columbia University<br>B.S. Chemical Engineering, Washington University in St. Louis</dd></div>
       <div><dt>Fellowship</dt><dd>National Defense Science and Engineering Graduate (NDSEG) Fellow, 2024&ndash;present</dd></div>
-      <div><dt>Credential</dt><dd>Engineer in Training (EIT)</dd></div>
+      <div><dt>Credentials</dt><dd>Ph.D. Candidate, Earth &amp; Environmental Engineering, Columbia University<br>Engineer in Training (EIT)</dd></div>
     </dl>
   </div>
 </section>
@@ -173,17 +177,17 @@
     <h2 id="what-h">Data science for climate and energy decisions</h2>
     <div class="trio">
       <div>
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="12" r="2"/><path d="M7 6l10 6M7 18l10-6"/></svg>
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="12" r="2"/><path d="M7 6l10 6M7 18l10-6"/></svg></div>
         <h3>Machine learning for sparse data</h3>
         <p>Hybrid physics&ndash;machine learning workflows, neural network ensembles, and transfer learning that carry models trained on synthetic data over to scarce real-world observations.</p>
       </div>
       <div>
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
         <h3>Spatial statistics &amp; uncertainty</h3>
         <p>Spatial analysis between sparse measurement points, forecasts with calibrated confidence intervals, and causal discovery to interpret what drives a prediction.</p>
       </div>
       <div>
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
         <h3>Energy systems &amp; policy</h3>
         <p>Grid-integration policy scenarios and optimization, plus hands-on permitting experience for solar, battery storage, and transmission projects.</p>
       </div>
@@ -191,8 +195,27 @@
   </div>
 </section>
 
+<!-- AWARDS -->
+<section id="awards" class="band band-olive" aria-labelledby="awards-h">
+  <div class="wrap">
+    <h2 id="awards-h">Awards</h2>
+    <div class="awards">
+      <article class="lead">
+        <p class="when">Sep 2024 &ndash; present</p>
+        <h3>National Defense Science and Engineering Graduate Fellow</h3>
+        <p>Earned a competitive three-year graduate fellowship from the Department of Defense, awarded through the Office of the Under Secretary for Research and Engineering and the military services (award rate under 6.3%).</p>
+      </article>
+      <article>
+        <p class="when">Jun 2022</p>
+        <h3>&ldquo;What We Do Matters&rdquo; and &ldquo;We Invest in a Better World&rdquo;</h3>
+        <p>Two company culture recognitions at Burns &amp; McDonnell for an innovative solution to a project obstacle and dedication to a client.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- RESEARCH -->
-<section id="research" class="band band-cream">
+<section id="research" class="band band-moss">
   <div class="wrap">
     <h2>Current research at Columbia University</h2>
     <p class="section-intro">Applied data science for transmission and wind energy, and for representing air-sea exchange in climate models.</p>
@@ -297,7 +320,7 @@
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="band band-cream">
+<section id="projects" class="band band-moss">
   <div class="wrap">
     <h2>Selected climate &amp; energy data projects</h2>
     <p class="section-intro">Collaborative and course projects in energy systems, climate data, and machine learning.</p>
@@ -378,7 +401,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="band band-olive">
+<section id="contact" class="band band-ink">
   <div class="wrap">
     <h2>Get in touch</h2>
     <p class="section-intro">Open to conversations about climate and energy data science roles and collaborations.</p>

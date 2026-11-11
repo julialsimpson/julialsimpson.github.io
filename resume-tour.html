@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <!--
   Personal website: Julia L. Simpson (Resume Tour)
-  Created 2026-11-11. Goal: a guided, step-by-step walk through the resume, with each stop
-    linking to the fuller page or section on the site.
+  Created 2026-11-11. Goal: a guided walk through the resume.
+  Modified 2026-11-11 (pm): rebuilt as a single scrolling page per Julia: a map of resume
+    locations at the top, a clickable index that tracks the reader's position, and a
+    placeholder visual for each experience.
   Decisions:
-    - Content is taken from the Oct 2026 one-page and extended resumes only.
-    - Stops are written into the HTML so the full resume is readable without JavaScript;
-      the script then shows one stop at a time (tabs + previous/next + arrow keys) and
-      keeps the current stop in the URL hash so a specific stop can be linked.
+    - Content comes only from the Oct 2026 one-page and extended resumes.
+    - Stops run chronologically (2016 to present) so the map route reads as a journey;
+      this reverses the resume's order and is easy to flip if preferred.
+    - Map: U.S. Census Bureau state boundaries via us-atlas@3.0.1 (states-10m, simplified),
+      Albers equal-area conic (parallels 29.5N/45.5N), pre-projected to static SVG paths.
+      Pins: St. Louis, Kansas City, Wallingford CT, and Columbia's Morningside campus.
+    - Visual slots are placeholders until Julia supplies images.
 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resume Tour — Julia L. Simpson</title>
-  <meta name="description" content="A guided tour through Julia L. Simpson's resume: climate and energy data science research, engineering consulting, education, and skills.">
+  <meta name="description" content="A guided tour through Julia L. Simpson's resume, from St. Louis to New York.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
@@ -31,6 +36,7 @@
     <ul class="nav-links" id="nav-links">
       <li><a href="./#about">About</a></li>
       <li><a href="./#research">Research</a></li>
+      <li><a href="./#awards">Awards</a></li>
       <li><a href="./#experience">Experience</a></li>
       <li><a href="./#projects">Projects</a></li>
       <li><a href="resume-tour.html" aria-current="page">Resume Tour</a></li>
@@ -40,94 +46,233 @@
 </nav>
 
 <main>
-  <header class="page-head">
+  <header class="tour-head">
     <div class="wrap">
       <h1>Resume tour</h1>
-      <p class="lede">A guided walk through my resume, one stop at a time. Each stop links to more detail elsewhere on the site.</p>
+      <p class="lede">From chemical engineering in St. Louis to climate and energy data science in New York. Select a city or scroll to follow along.</p>
       <div class="actions">
         <a class="btn btn-line" href="Julia_L_Simpson_Resume.pdf" target="_blank" rel="noopener">Download the resume (PDF)</a>
       </div>
+      <figure class="tour-map">
+        <svg viewBox="0 0 1000 520" role="group" aria-label="Map of resume locations: St. Louis, Kansas City, Wallingford, and New York">
+          <path class="state" d="M346.9,520L346.4,519.4L346.4,519.4L363.5,520L346.9,520Z"><title>Alabama</title></path>
+          <path class="state" d="M377.1,261.4L385.5,265L397,260.1L454.1,261.2L454,263.6L452.8,363.6L453,375.6L434,378.6L434.9,385.1L422.5,395.1L419.5,404.7L409.3,403.3L402,408.1L393.5,405.5L383.3,413.1L369.4,405.3L356.4,411.5L354.5,407.5L373.7,375.8L370,359.2L373.5,352.4Z"><title>Indiana</title></path>
+          <path class="state" d="M0,286.3L149.5,309.6L161.1,317.7L153.3,328.2L159.7,341.2L165.9,345.7L156.4,427.1L0,404.7L0,286.3Z"><title>Kansas</title></path>
+          <path class="state" d="M902,132.7L902,132.7L902,132.7ZM898.7,134.5L898.7,134.5L898.7,134.5ZM896.8,127.7L896.8,127.7L896.8,127.7ZM889.1,133.1L889.1,133.1L889.1,133.1ZM889.4,148L889.4,148L889.4,148ZM887,138.3L887,138.3L887,138.3ZM885.6,133.1L885.6,133.1L885.6,133.1ZM845.1,185.5L835.6,174.4L835,167L822.9,101.6L829.3,103.6L831.5,92.3L841.7,76.3L840.6,59.5L844.1,45L859.6,13.2L864.5,13.6L869.6,22.4L885.7,13L899,21.8L907.6,74.1L917.5,75.3L918.6,87.7L928.1,90.6L935.2,102.9L927.2,108.4L921.4,119.5L915.9,116.5L909.8,126L897.6,130.8L896.9,140.6L889,130.2L888.4,122.9L880.7,146.9L862.3,155L852.1,166Z"><title>Maine</title></path>
+          <path class="state" d="M866.5,250.4L866.5,250.4L866.5,250.4ZM850.6,251L856.4,245.2L861.3,249.7ZM775.9,206.4L798.3,204.5L830.7,201.5L842.9,193L850.2,200.3L840.6,211.4L852.1,222.2L856.3,232.2L864.8,234.9L871.4,230.3L874.1,234.4L854.5,243.1L854.5,236.5L841.7,246.6L838.7,240.1L837.7,238.9L831.7,227.7L820.1,229.7L772.7,233.7Z"><title>Massachusetts</title></path>
+          <path class="state" d="M260.5,0L262,4.6L265.1,0L265.5,0L265.5,0L278.7,6.9L282,13.1L290.3,12.2L300.1,6.8L302.9,12.5L319.1,13.2L325.4,18.4L333,18.4L322.5,24L307.6,27.9L291.5,38.3L281.5,48L264.5,59.5L266.3,62.8L258.8,63.8L256.8,86.1L245.1,92.1L239.4,103.6L245.3,109.4L241.7,114.8L238.6,134.6L245.1,143L261.1,153.4L261.9,158.4L273.2,167.1L277.2,173.7L277.9,186.8L134.1,171.8L143.1,103.4L133.9,90.4L143.4,79L144.4,63.9L140.9,50.6L144.3,14.7L141.2,0L260.5,0Z"><title>Minnesota</title></path>
+          <path class="state" d="M722.8,332.5L724,330.2L726.3,325.5L745.2,310.1L734.5,300.9L729.3,290.7L730.2,279.8L741.4,263.8L765.2,275.3L762.5,287.5L761.9,288.7L757,295.4L765.9,299.5L764.7,323.3L759.1,336.7L742.4,357.4L744.1,348.8L724.1,338.9L722.9,333.4Z"><title>New Jersey</title></path>
+          <path class="state" d="M730.4,474.9L730.4,474.9L730.4,474.9ZM724.4,509L724.4,509L724.4,509ZM571.8,520L568.6,514.9L529.8,513.9L510.7,520L467.2,520L467.2,520L467.9,513.4L476.3,510.5L483.9,500.4L492.7,500.1L507.8,492.1L518.8,480.7L519.4,484.3L531.5,476.9L537.2,477.9L547.5,460L547.5,460L589.6,460.3L724.1,451.7L718.9,453.7L723.3,463.6L701.4,477.4L727.8,474.3L730,488.8L719.6,499.4L691.8,494.3L709.7,502.8L701.6,516.6L711.3,510.5L716.4,514.8L713.9,520L571.8,520Z"><title>North Carolina</title></path>
+          <path class="state" d="M141.2,0L144.3,14.7L140.9,50.6L144.4,63.9L143.4,79L0,53.9L0,0Z"><title>North Dakota</title></path>
+          <path class="state" d="M0,404.7L156.4,427.1L154.3,446.2L155.2,489.2L151.1,520L18,520L18,520L2.5,509.6L0,508.9L0,404.7Z"><title>Oklahoma</title></path>
+          <path class="state" d="M575,251.1L595.9,239L596.5,249.4L720.3,241L727.8,246.4L729.7,255.3L741.4,263.8L730.2,279.8L729.3,290.7L734.5,300.9L745.2,310.1L726.3,325.5L715.8,329.5L608.6,336.7L578.2,338L576.9,302.7Z"><title>Pennsylvania</title></path>
+          <path class="state" d="M0,53.9L143.4,79L133.9,90.4L143.1,103.4L134.1,171.8L125.2,201.5L129.2,210.3L123.4,203.3L107.3,192.8L92.5,190.6L87.2,193.9L75.3,182.9L0,169L0,53.9Z"><title>South Dakota</title></path>
+          <path class="state" d="M0,508.9L2.5,509.6L18,520L0,520Z"><title>Texas</title></path>
+          <path class="state" d="M772.7,233.7L820.1,229.7L821.8,256.2L792.8,262.7L772.3,275.1L774.1,262.8Z"><title>Connecticut</title></path>
+          <path class="state" d="M139.1,285.6L172.5,290.1L254.7,296.4L263,306.2L259.8,319.2L262.4,331.1L279.9,351.8L280.7,363.6L296.7,367.7L287.9,386.8L288,391.8L311.7,413.4L313.9,424.9L310.7,429.1L316.9,440.8L321.7,441.4L320.2,453.6L312,459.6L309.9,459.5L308.3,459.4L307.9,468L301.2,478.2L281.6,477.1L291.3,467.1L289.8,458.2L154.3,446.2L156.4,427.1L165.9,345.7L159.7,341.2L153.3,328.2L161.1,317.7L149.5,309.6L142,296.5Z"><title>Missouri</title></path>
+          <path class="state" d="M518.5,389.7L526.6,388.6L529.5,375.1L534.9,366L539.1,371.9L542.8,360L551,351.1L558.5,351.3L569.2,338.6L575.1,315L572.8,305.3L576.9,302.7L578.2,338L608.6,336.7L609.3,356.6L629.1,339.5L638.4,343.1L646.3,335.7L655.2,340.4L660.7,349.2L658,356.7L642.1,344.8L641.1,356.4L628.3,372.8L624.4,369.6L615.9,387L605.6,380.5L604.7,386.8L587.9,416L588,423.1L560.5,434.6L556.3,430.8L546.9,436.3L539.2,430.4L537.9,423.5L528,418.6L517.4,400.7Z"><title>West Virginia</title></path>
+          <path class="state" d="M263,306.2L265.3,297.7L272.4,295.5L278.5,279.6L274.2,273.8L276.7,267.1L297.1,261.8L302.2,253.7L303.5,241.9L297.7,237.7L291,225.9L370.5,231L369.2,238.2L377.1,261.4L373.5,352.4L370,359.2L373.7,375.8L354.5,407.5L356.4,411.5L354.2,424L342.2,426.8L342.2,438.9L328.7,432.4L321.7,441.4L316.9,440.8L310.7,429.1L313.9,424.9L311.7,413.4L288,391.8L287.9,386.8L296.7,367.7L280.7,363.6L279.9,351.8L262.4,331.1L259.8,319.2Z"><title>Illinois</title></path>
+          <path class="state" d="M151.1,520L155.2,489.2L154.3,446.2L154.3,446.2L289.8,458.2L291.3,467.1L281.6,477.1L301.2,478.2L303.4,482.7L293.7,488.4L296.8,491.9L286.5,499.7L289,510.8L281.1,515.8L277,520L151.1,520Z"><title>Arkansas</title></path>
+          <path class="state" d="M722.8,332.5L722.9,333.4L722.8,332.5ZM715.8,329.5L726.3,325.5L724,330.2L722.5,339.1L729.3,353.7L739.2,363L741.8,376.4L722.8,377.8Z"><title>Delaware</title></path>
+          <path class="state" d="M679.4,362.9L682.1,368.2L679.4,362.9Z"><title>District of Columbia</title></path>
+          <path class="state" d="M134.1,171.8L277.9,186.8L281.5,196.7L277.9,201L280.1,216.3L289.5,221L291,225.9L297.7,237.7L303.5,241.9L302.2,253.7L297.1,261.8L276.7,267.1L274.2,273.8L278.5,279.6L272.4,295.5L265.3,297.7L263,306.2L254.7,296.4L172.5,290.1L139.1,285.6L138.5,251.4L134.4,248.2L136.4,238.1L131.8,227.9L129.2,210.3L125.2,201.5Z"><title>Iowa</title></path>
+          <path class="state" d="M321.7,441.4L328.7,432.4L342.2,438.9L342.2,426.8L354.2,424L356.4,411.5L369.4,405.3L383.3,413.1L393.5,405.5L402,408.1L409.3,403.3L419.5,404.7L422.5,395.1L434.9,385.1L434,378.6L453,375.6L452.8,363.6L463.8,363.3L470.6,375.2L486.8,382.1L497.3,383L509.6,376.9L518.5,389.7L517.4,400.7L528,418.6L537.9,423.5L526.5,434.3L515.4,440.2L503.1,454.7L486.7,460.3L431.6,459.4L398.2,457.3L359.8,456.7L353.3,454.7L353.5,461.7L312,459.6L320.2,453.6ZM309.9,459.5L308.3,459.4L309.9,459.5Z"><title>Kentucky</title></path>
+          <path class="state" d="M715.6,398.1L714.1,398.2L715.6,398.1ZM712,391.7L712,391.7L712,391.7ZM701.1,367.6L701.1,367.6L701.1,367.6ZM608.6,336.7L715.8,329.5L722.8,377.8L741.8,376.4L737.7,393.2L725.3,397.3L718.7,399.2L719.1,387.8L709.5,387.4L703.8,378.2L712.6,374.6L701.5,364.5L705.6,346L698.4,351.4L698.2,376.8L701.7,391.2L690.8,389.1L683.7,381.5L678.4,385.2L679.9,374.5L682.1,368.2L679.4,362.9L667.1,356.6L660.7,349.2L655.2,340.4L646.3,335.7L638.4,343.1L629.1,339.5L609.3,356.6Z"><title>Maryland</title></path>
+          <path class="state" d="M459.5,103.8L459.5,103.8L459.5,103.8ZM439.7,106.8L439.7,106.8L439.7,106.8ZM436.2,104.8L436.2,104.8L436.2,104.8ZM433.3,113.6L433.3,113.6L433.3,113.6ZM431.5,108.2L431.5,108.2L431.5,108.2ZM426.4,119.4L426.4,119.4L426.4,119.4ZM421.2,130.8L421.2,130.8L421.2,130.8ZM418.7,135.8L418.7,135.8L418.7,135.8ZM404.9,112.2L404.9,112.2L404.9,112.2ZM397,260.1L402.9,255.1L413.5,234.2L414.9,212.2L406.9,187.3L409.9,182.4L408,172.4L415.1,161.2L415.7,147.9L420.8,140.6L428,138.3L433.3,129.3L433.5,145.4L439.2,139.2L440,126.2L452.3,121.6L446.9,114.7L456.2,106.5L471.2,112.5L475.4,118.1L490.4,123.1L496.6,135.8L492,139L496.6,147.7L495.1,162L488.3,172.9L481.5,175.6L478.1,184.7L485.6,190.9L497.1,176.1L506.6,172.3L514.2,180.5L517.8,204.6L520.7,212.9L518.2,228.3L509.8,227.7L503.1,239.7L499.7,251.7L492.4,262.3L454,263.6L454.1,261.2ZM341.2,23.4L357,14.3L356.5,19.1L344.4,25.4ZM307.8,71.3L324.8,62.7L334.2,62.5L368.2,40.7L380.2,43.3L366.4,50.4L360.5,58.8L359.8,66.9L365.6,60.7L380.4,64.8L387.4,77L408.6,80L420.6,72.3L437.9,72.3L451.9,69.1L449.8,80L461.2,82.7L470.9,78.2L474.9,94.9L480.3,98.8L488,95.1L488.6,101.9L473.9,99.4L466.9,101.2L459.5,96.5L454.7,103.4L449.9,98L436.7,94.7L432.6,99.4L418.5,99.3L413.8,105.8L404.2,110.2L409.5,103.3L396.4,103.5L380.1,131.3L373.5,121.7L373.5,121.7L375.8,109L366.6,103.1L367.7,99.2L349.7,94.8L341.8,89.7L315,80.5L309.4,72.5L309.4,72.5Z"><title>Michigan</title></path>
+          <path class="state" d="M277,520L281.1,515.8L346.4,519.4L346.9,520L277,520Z"><title>Mississippi</title></path>
+          <path class="state" d="M813.3,114.1L815.4,105L822.9,101.6L835,167L835.6,174.4L845.1,185.5L842.9,193L830.7,201.5L798.3,204.5L796.5,171.9L803.5,151.1L802.4,142.3L813.8,133.8L811.3,124.7Z"><title>New Hampshire</title></path>
+          <path class="state" d="M817.1,259.3L817.1,259.3L817.1,259.3ZM814.8,265.7L814.8,265.7L814.8,265.7ZM812.4,262.7L812.4,262.7L812.4,262.7ZM761.9,288.7L757,295.4L761.9,288.7ZM686,171.6L686,171.6L686,171.6ZM683.8,171.1L683.8,171.1L683.8,171.1ZM595.9,239L612.6,227.3L620.4,218L613.4,199.9L629.2,194.7L650.7,195.4L655.9,198.4L671.9,195.9L685.9,185.2L690.9,184.5L692.3,168.7L685.5,165.5L686.6,159L697,151.7L711.8,132.3L724.1,124.3L764,120.3L764.3,134.7L767.8,141.8L765.5,157.4L772.8,175.5L775.9,206.4L772.7,233.7L774.1,262.8L772.3,275.1L777.4,276L801.4,271.8L808.6,264.8L816.5,269.6L786.6,287.2L766,292.9L762.5,287.5L765.2,275.3L741.4,263.8L729.7,255.3L727.8,246.4L720.3,241L596.5,249.4Z"><title>New York</title></path>
+          <path class="state" d="M512.8,267.1L512.8,267.1L512.8,267.1ZM509.7,265.4L509.7,265.4L509.7,265.4ZM454,263.6L492.4,262.3L507.2,270.6L509.9,267.7L520.1,275.5L533.4,270.1L541.2,271L561.4,256.3L575,251.1L576.9,302.7L572.8,305.3L575.1,315L569.2,338.6L558.5,351.3L551,351.1L542.8,360L539.1,371.9L534.9,366L529.5,375.1L526.6,388.6L518.5,389.7L509.6,376.9L497.3,383L486.8,382.1L470.6,375.2L463.8,363.3L452.8,363.6Z"><title>Ohio</title></path>
+          <path class="state" d="M363.5,520L346.4,519.4L281.1,515.8L289,510.8L286.5,499.7L296.8,491.9L293.7,488.4L303.4,482.7L301.2,478.2L301.2,478.2L307.9,468L308.3,459.4L309.9,459.5L312,459.6L353.5,461.7L353.3,454.7L359.8,456.7L398.2,457.3L431.6,459.4L486.7,460.3L547.5,460L537.2,477.9L531.5,476.9L519.4,484.3L518.8,480.7L507.8,492.1L492.7,500.1L483.9,500.4L476.3,510.5L467.9,513.4L467.2,520L363.5,520Z"><title>Tennessee</title></path>
+          <path class="state" d="M715.8,402.1L715.8,402.1L715.8,402.1ZM725.3,397.3L737.7,393.2L729.1,405.3L723,427.7L716.9,424.9L718.8,411.5ZM715.6,398.1L714.1,398.2L715.6,398.1ZM537.9,423.5L539.2,430.4L546.9,436.3L556.3,430.8L560.5,434.6L588,423.1L587.9,416L604.7,386.8L605.6,380.5L615.9,387L624.4,369.6L628.3,372.8L641.1,356.4L642.1,344.8L658,356.7L660.7,349.2L667.1,356.6L679.4,362.9L682.1,368.2L679.9,374.5L676.7,386.4L684.2,384.2L686,390.3L696.5,392.1L708.6,401.1L704.8,420.3L710.1,432.2L704.3,439.9L718.9,437.7L724.1,451.7L589.6,460.3L547.5,460L486.7,460.3L503.1,454.7L515.4,440.2L526.5,434.3Z"><title>Virginia</title></path>
+          <path class="state" d="M397.5,122.1L397.5,122.1L397.5,122.1ZM386,127.6L386,127.6L386,127.6ZM307.6,54.6L307.6,54.6L307.6,54.6ZM305.8,59.3L305.8,59.3L305.8,59.3ZM302.5,57.2L302.5,57.2L302.5,57.2ZM299.5,60.3L299.5,60.3L299.5,60.3ZM300.4,55.6L300.4,55.6L300.4,55.6ZM299.6,53.2L299.6,53.2L299.6,53.2ZM298.5,62.3L298.5,62.3L298.5,62.3ZM294.1,54.3L294.1,54.3L294.1,54.3ZM266.3,62.8L279.6,61.9L294.2,56L299.9,58.4L293.8,69.1L299.8,65.9L307.8,71.3L309.4,72.5L309.4,72.5L315,80.5L341.8,89.7L349.7,94.8L367.7,99.2L366.6,103.1L375.8,109L373.5,121.7L373.5,121.7L380.1,131.3L368.9,145.3L368.9,152.6L379.2,141.1L384.8,138.8L394.7,124.3L394.7,132.1L382.6,152.3L380.7,166.5L374.4,177.7L374.9,185.4L368.5,202.3L370.5,231L291,225.9L289.5,221L280.1,216.3L277.9,201L281.5,196.7L277.9,186.8L277.2,173.7L273.2,167.1L261.9,158.4L261.1,153.4L245.1,143L238.6,134.6L241.7,114.8L245.3,109.4L239.4,103.6L245.1,92.1L256.8,86.1L258.8,63.8Z"><title>Wisconsin</title></path>
+          <path class="state" d="M0,169L75.3,182.9L87.2,193.9L92.5,190.6L107.3,192.8L123.4,203.3L129.2,210.3L131.8,227.9L136.4,238.1L134.4,248.2L138.5,251.4L139.1,285.6L142,296.5L149.5,309.6L0,286.3L0,169Z"><title>Nebraska</title></path>
+          <path class="state" d="M510.7,520L529.8,513.9L568.6,514.9L571.8,520L510.7,520Z"><title>South Carolina</title></path>
+          <path class="state" d="M764,120.3L813.3,114.1L811.3,124.7L813.8,133.8L802.4,142.3L803.5,151.1L796.5,171.9L798.3,204.5L775.9,206.4L772.8,175.5L765.5,157.4L767.8,141.8L764.3,134.7Z"><title>Vermont</title></path>
+          <path class="state" d="M838.7,240.1L841.7,246.6L835.5,247.5ZM834,241.3L834,241.3L834,241.3ZM834,249.1L834,249.1L834,249.1ZM829.6,261.4L829.6,261.4L829.6,261.4ZM821.8,256.2L820.1,229.7L831.7,227.7L837.7,238.9L832.7,236.7L832.2,252.8Z"><title>Rhode Island</title></path>
+          <path class="route" d="M293.6 376.1 Q221.0 400.3 166.6 346.6 Q239.2 322.4 293.6 376.1 Q522.5 227.8 793.9 254.3 Q788.9 278.6 764.4 282.8"/>
+          <a class="pin" data-place="stl" href="#washu" aria-label="St. Louis, MO, 2016 – 2020">
+            <circle cx="293.6" cy="376.1" r="8"/>
+            <text x="307.6" y="354.1" text-anchor="start">St. Louis<tspan class="st">, MO</tspan></text>
+            <text class="yrs" x="307.6" y="373.1" text-anchor="start">2016 &ndash; 2020</text>
+          </a>
+          <a class="pin" data-place="kc" href="#kc" aria-label="Kansas City, MO, 2019">
+            <circle cx="166.6" cy="346.6" r="8"/>
+            <text x="166.6" y="304.6" text-anchor="middle">Kansas City<tspan class="st">, MO</tspan></text>
+            <text class="yrs" x="166.6" y="323.6" text-anchor="middle">2019</text>
+          </a>
+          <a class="pin" data-place="wfd" href="#bmcd" aria-label="Wallingford, CT, 2020 – 2022">
+            <circle cx="793.9" cy="254.3" r="8"/>
+            <text x="777.9" y="220.3" text-anchor="end">Wallingford<tspan class="st">, CT</tspan></text>
+            <text class="yrs" x="777.9" y="239.3" text-anchor="end">2020 &ndash; 2022</text>
+          </a>
+          <a class="pin" data-place="nyc" href="#columbia" aria-label="New York, NY, 2022 – present">
+            <circle cx="764.4" cy="282.8" r="8"/>
+            <text x="748.4" y="308.8" text-anchor="end">New York<tspan class="st">, NY</tspan></text>
+            <text class="yrs" x="748.4" y="327.8" text-anchor="end">2022 &ndash; present</text>
+          </a>
+        </svg>
+        <figcaption>State boundaries: U.S. Census Bureau, via us-atlas.</figcaption>
+      </figure>
     </div>
   </header>
 
   <div class="band"><div class="wrap">
     <div class="tour">
-      <ol class="tour-stops" role="tablist" aria-label="Resume stops" hidden></ol>
-
+      <nav class="tour-index" aria-label="Tour stops">
+        <ol>
+          <li><a href="#washu">Washington University<span class="place">St. Louis, MO</span></a></li>
+          <li><a href="#case">Aerosol research<span class="place">St. Louis, MO</span></a></li>
+          <li><a href="#kc">Burns &amp; McDonnell intern<span class="place">Kansas City, MO</span></a></li>
+          <li><a href="#sust">Office of Sustainability<span class="place">St. Louis, MO</span></a></li>
+          <li><a href="#bmcd">Burns &amp; McDonnell<span class="place">Wallingford, CT</span></a></li>
+          <li><a href="#columbia">Columbia University<span class="place">New York, NY</span></a></li>
+          <li><a href="#dlr">Research: wind &amp; DLR<span class="place">New York, NY</span></a></li>
+          <li><a href="#airsea">Research: air-sea fluxes<span class="place">New York, NY</span></a></li>
+          <li><a href="#community">Teaching &amp; community<span class="place">New York, NY</span></a></li>
+          <li><a href="#skills">Technical skills<span class="place">Toolkit</span></a></li>
+        </ol>
+      </nav>
       <div class="tour-body">
-        <section class="tour-panel" id="summary" data-label="Summary">
-          <p class="when">Summary</p>
-          <h2>Climate and energy data science</h2>
-          <p class="prose">National Defense Science and Engineering Graduate (NDSEG) Fellow with expertise in climate and energy data analysis, machine learning, and scientific communication. Passionate about advancing climate resilience, accelerating the energy transition, and integrating science and policy. 6+ years of combined research and engineering consulting experience.</p>
-          <p class="see"><a href="./#about">About me</a></p>
-        </section>
-
-        <section class="tour-panel" id="dlr" data-label="Research: wind &amp; DLR">
-          <p class="when">Aug 2022 &ndash; present</p>
-          <h2>Wind energy &amp; dynamic line rating</h2>
-          <p class="where">Graduate Researcher (Ph.D. Candidate), Columbia University, New York, NY</p>
+        <article class="stop" id="washu" data-place="stl">
+          <p class="when">Aug 2016 &ndash; May 2020, St. Louis, MO</p>
+          <h2>Washington University in St. Louis</h2>
+          <p class="where">Bachelor of Science in Chemical Engineering</p>
+          <div class="visual-slot" role="img" aria-label="Placeholder for a visual of this experience"><div><span>Visual coming soon</span></div></div>
+          <ul class="bullets">
+            <li>B.S. in Chemical Engineering, Cum Laude, GPA 3.73 (May 2020). Minors in Energy Engineering, Environmental Engineering, and Psychology-Neuroscience-Philosophy.</li>
+          </ul>
+          <h3>Engineering Course Assistant &amp; Tutor</h3>
+          <p class="meta">Dec 2016 &ndash; May 2018</p>
+          <ul class="bullets">
+            <li>Taught class sections of about 40 first-year engineering students, introducing engineering disciplines through collaborative, project-based learning.</li>
+            <li>Tutored 13 college students in Calculus III, Differential Equations, Physics, and chemical engineering courses.</li>
+          </ul>
+          <h3>Relay For Life</h3>
+          <p class="meta">Aug 2016 &ndash; Apr 2020</p>
+          <ul class="bullets">
+            <li>Chaired the Fundraising committee and collaborated on two other sub-committees (Event and Development) within a 50-person Steering committee. Coordinated benefit nights with local businesses for the American Cancer Society, ran on-campus fundraising events, and contributed to registration of over 1,300 people.</li>
+          </ul>
+          
+        </article>
+        <article class="stop" id="case" data-place="stl">
+          <p class="when">Sep 2017 &ndash; Dec 2018, St. Louis, MO</p>
+          <h2>Research Assistant</h2>
+          <p class="where">Center for Aerosol Science &amp; Engineering, St. Louis, MO</p>
+          <div class="visual-slot" role="img" aria-label="Placeholder for a visual of this experience"><div><span>Visual coming soon</span></div></div>
+          <ul class="bullets">
+            <li>Processed PM2.5 Teflon filters using microwave-aided acid digestion and inductively coupled plasma mass spectrometry for an air quality study measuring health outcomes for a manganese-exposed African community.</li>
+            <li>Developed, tested, and validated a revised Standard Operating Procedure for ambient quartz-filter samples from Mongolia, involving a new acid matrix for air toxic metals analysis on 18 elements.</li>
+          </ul>
+          
+        </article>
+        <article class="stop" id="kc" data-place="kc">
+          <p class="when">May 2019 &ndash; Aug 2019, Kansas City, MO</p>
+          <h2>Chemical Engineering Intern</h2>
+          <p class="where">Burns &amp; McDonnell, Kansas City, MO</p>
+          <div class="visual-slot" role="img" aria-label="Placeholder for a visual of this experience"><div><span>Visual coming soon</span></div></div>
+          <ul class="bullets">
+            <li>Consulted within the Process Engineering group in the Energy Global Practice on 11 different projects, separately focusing on water quality, constituent environmental standards, technical design, and process analysis.</li>
+          </ul>
+          
+        </article>
+        <article class="stop" id="sust" data-place="stl">
+          <p class="when">Jan 2020 &ndash; Mar 2020, St. Louis, MO</p>
+          <h2>Sustainability Engineering Intern</h2>
+          <p class="where">Office of Sustainability, St. Louis, MO</p>
+          <div class="visual-slot" role="img" aria-label="Placeholder for a visual of this experience"><div><span>Visual coming soon</span></div></div>
+          <ul class="bullets">
+            <li>Collaborated on a team of 5 student interns to design 2.5 MW of solar installations for the city of St. Louis. Developed a comprehensive proposal integrating SolSmart policy and Helioscope engineering design.</li>
+          </ul>
+          
+        </article>
+        <article class="stop" id="bmcd" data-place="wfd">
+          <p class="when">Aug 2020 &ndash; Dec 2022, Wallingford, CT</p>
+          <h2>Assistant Chemical Engineer</h2>
+          <p class="where">Burns &amp; McDonnell, Wallingford, CT</p>
+          <div class="visual-slot" role="img" aria-label="Placeholder for a visual of this experience"><div><span>Visual coming soon</span></div></div>
+          <ul class="bullets">
+            <li>As Environmental Permitting Specialist: authored and submitted permit applications for energy infrastructure projects, including large-scale 55 and 65 megawatt (MW) solar installations, battery storage, and transmission lines.</li>
+            <li>As Remediation &amp; Air Emissions Scientist: analyzed regulatory frameworks to counsel clients on relevant requirements; executed field sampling campaigns, analyzed environmental data to evaluate remediation efficacy; and calculated facility potential to emit for 6 criteria and 188 hazardous air pollutants.</li>
+          </ul>
+          <h3>Recognition</h3>
+          <p class="meta">Jun 2022</p>
+          <ul class="bullets">
+            <li>&ldquo;What We Do Matters&rdquo; and &ldquo;We Invest in a Better World&rdquo;: two company culture recognitions for an innovative solution to a project obstacle and dedication to a client.</li>
+          </ul>
+          <h3>Leadership</h3>
+          <ul class="bullets">
+            <li>Representative on the Microplastics Team at the Interstate Technology Regulatory Council.</li>
+            <li>Nominated and served as Diversity, Equity, &amp; Inclusion Lead for the New England regional offices.</li>
+            <li>Founding member of the Green Team supporting environmental and sustainable initiatives in the Wallingford office.</li>
+          </ul>
+          
+        </article>
+        <article class="stop" id="columbia" data-place="nyc">
+          <p class="when">Aug 2022 &ndash; present, New York, NY</p>
+          <h2>Columbia University</h2>
+          <p class="where">Graduate Researcher (Ph.D. Candidate), Earth &amp; Environmental Engineering</p>
+          <div class="visual-slot" role="img" aria-label="Placeholder for a visual of this experience"><div><span>Visual coming soon</span></div></div>
+          <ul class="bullets">
+            <li>M.S. in Earth &amp; Environmental Engineering, GPA 4.07 (Feb 2024). Concentration in Sustainable Energy &amp; Carbon with additional focuses on Data Science, Water Resources &amp; Climate Risk.</li>
+            <li>M.Phil. in Earth and Environmental Engineering, GPA 3.73 (expected Dec 2026).</li>
+          </ul>
+          <h3>National Defense Science and Engineering Graduate Fellow</h3>
+          <p class="meta">Sep 2024 &ndash; present</p>
+          <ul class="bullets">
+            <li>Earned a competitive three-year graduate fellowship from the Department of Defense, awarded through the Office of the Under Secretary for Research and Engineering and the military services (award rate under 6.3%).</li>
+          </ul>
+          
+        </article>
+        <article class="stop" id="dlr" data-place="nyc">
+          <p class="when">Aug 2022 &ndash; present, New York, NY</p>
+          <h2>Research: wind energy &amp; dynamic line rating</h2>
+          <p class="where">Columbia University</p>
+          <div class="visual-slot" role="img" aria-label="Placeholder for a visual of this experience"><div><span>Visual coming soon</span></div></div>
           <ul class="bullets">
             <li>Applies spatial analysis to develop a risk-mitigation framework for wind energy along transmission corridors, where the same wind that drives generation also cools the line and raises its dynamic line rating (DLR), so transfer capacity peaks just as wind output does.</li>
             <li>Predicts wind speed between sparse measurement points, forecasts with calibrated confidence intervals, and culminates in sensor-placement recommendations to improve safety and reduce curtailment.</li>
           </ul>
           <p class="see"><a href="research/dynamic-line-rating.html">Project page</a></p>
-        </section>
-
-        <section class="tour-panel" id="air-sea" data-label="Research: air-sea fluxes">
-          <p class="when">Aug 2022 &ndash; present</p>
-          <h2>Machine learning for air&#8209;sea fluxes</h2>
-          <p class="where">Graduate Researcher (Ph.D. Candidate), Columbia University, New York, NY</p>
+        </article>
+        <article class="stop" id="airsea" data-place="nyc">
+          <p class="when">Aug 2022 &ndash; present, New York, NY</p>
+          <h2>Research: machine learning for air&#8209;sea fluxes</h2>
+          <p class="where">Columbia University</p>
+          <div class="visual-slot" role="img" aria-label="Placeholder for a visual of this experience"><div><span>Visual coming soon</span></div></div>
           <ul class="bullets">
             <li>Addresses oceanographic observational data scarcity in air-sea flux representation in climate modeling by developing a hybrid physics&ndash;machine learning workflow using ensembles of neural networks trained on 3 million synthetic samples, then fine-tuned via transfer learning to ~10,000 in-situ observations.</li>
             <li>Employs causal discovery methods (PCMCI+) to illuminate directional relationships between meteorological drivers and air-sea fluxes, enabling physically grounded interpretation of machine learning predictions.</li>
           </ul>
           <p class="see"><a href="research/air-sea-fluxes.html">Project page</a></p>
-        </section>
-
-        <section class="tour-panel" id="consulting" data-label="Burns &amp; McDonnell">
-          <p class="when">Aug 2020 &ndash; Dec 2022</p>
-          <h2>Assistant Chemical Engineer</h2>
-          <p class="where">Burns &amp; McDonnell, Wallingford, CT</p>
+        </article>
+        <article class="stop" id="community" data-place="nyc">
+          <p class="when">May 2025 &ndash; present, New York, NY</p>
+          <h2>Teaching &amp; community</h2>
+          <p class="where">Columbia University and the LEAP Center</p>
+          <div class="visual-slot" role="img" aria-label="Placeholder for a visual of this experience"><div><span>Visual coming soon</span></div></div>
+          <h3>Teaching Assistant, CIEE/EAEE E4252</h3>
+          <p class="meta">Spring 2026</p>
           <ul class="bullets">
-            <li>As Environmental Permitting Specialist: authored and submitted permit applications for energy infrastructure projects, including large-scale 55 and 65 megawatt (MW) solar installations, battery storage, and transmission lines.</li>
-            <li>As Remediation &amp; Air Emissions Scientist: analyzed regulatory frameworks to counsel clients on relevant requirements; executed field sampling campaigns, analyzed environmental data to evaluate remediation efficacy; and calculated facility potential to emit for 6 criteria and 188 hazardous air pollutants.</li>
+            <li>Supported instruction for Foundations of Environmental Engineering, focusing on mass balances, water and air quality, and environmental treatment processes.</li>
+            <li>Mentored graduate students through one-on-one tutoring sessions, drawing on consulting experience to connect engineering fundamentals to regulatory and real-world practice.</li>
           </ul>
-          <p class="see"><a href="./#experience">Full experience</a></p>
-        </section>
-
-        <section class="tour-panel" id="early" data-label="Earlier roles">
-          <p class="when">Sep 2017 &ndash; Mar 2020</p>
-          <h2>Internships and undergraduate research</h2>
+          <h3>Graduate Earth &amp; Environmental Engineering Network</h3>
+          <p class="meta">May 2025 &ndash; present</p>
           <ul class="bullets">
-            <li><strong>Sustainability Engineering Intern, Office of Sustainability, St. Louis, MO</strong> (Jan &ndash; Mar 2020). Collaborated on a team of 5 student interns to design 2.5 MW of solar installations for the city of St. Louis, developing a comprehensive proposal integrating SolSmart policy and Helioscope engineering design.</li>
-            <li><strong>Chemical Engineering Intern, Burns &amp; McDonnell, Kansas City, MO</strong> (May &ndash; Aug 2019). Consulted within the Process Engineering group in the Energy Global Practice on 11 different projects, focusing on water quality, constituent environmental standards, technical design, and process analysis.</li>
-            <li><strong>Research Assistant, Center for Aerosol Science &amp; Engineering, St. Louis, MO</strong> (Sep 2017 &ndash; Dec 2018). Processed PM2.5 Teflon filters using microwave-aided acid digestion and inductively coupled plasma mass spectrometry for an air quality study; developed, tested, and validated a revised Standard Operating Procedure for air toxic metals analysis on 18 elements.</li>
+            <li>Chair of the Social Committee, responsible for organizing events and growing a new graduate student organization.</li>
           </ul>
-          <p class="see"><a href="./#experience">Full experience</a></p>
-        </section>
-
-        <section class="tour-panel" id="teaching" data-label="Teaching &amp; mentoring">
-          <p class="when">Dec 2016 &ndash; Spring 2026</p>
-          <h2>Teaching and mentoring</h2>
+          <h3>NVIDIA&ndash;LEAP Center Hackathon Collaboration</h3>
+          <p class="meta">Jun 2025 &ndash; Jan 2026</p>
           <ul class="bullets">
-            <li><strong>Teaching Assistant, Columbia University (CIEE/EAEE E4252)</strong> (Spring 2026). Supported instruction for Foundations of Environmental Engineering, focusing on mass balances, water and air quality, and environmental treatment processes; mentored graduate students through one-on-one tutoring, drawing on consulting experience to connect engineering fundamentals to regulatory and real-world practice.</li>
-            <li><strong>Engineering Course Assistant &amp; Tutor, Washington University in St. Louis</strong> (Dec 2016 &ndash; May 2018). Taught class sections of about 40 first-year engineering students through collaborative, project-based learning; tutored 13 college students in Calculus III, Differential Equations, Physics, and chemical engineering courses.</li>
+            <li>Member of a 9-person coding sub-team within a 17-person group downscaling climate model data to high resolution around New York City for a hackathon at the American Museum of Natural History.</li>
           </ul>
-        </section>
-
-        <section class="tour-panel" id="education" data-label="Education">
-          <p class="when">2016 &ndash; 2026</p>
-          <h2>Education</h2>
-          <ul class="bullets">
-            <li><strong>M.Phil., Earth and Environmental Engineering, Columbia University.</strong> Expected December 2026. GPA 3.73.</li>
-            <li><strong>M.S., Earth &amp; Environmental Engineering, Columbia University.</strong> February 2024. GPA 4.07. Concentration in Sustainable Energy &amp; Carbon with additional focuses on Data Science, Water Resources &amp; Climate Risk.</li>
-            <li><strong>B.S., Chemical Engineering (Cum Laude), Washington University in St. Louis.</strong> May 2020. GPA 3.73. Minors in Energy Engineering, Environmental Engineering, and Psychology-Neuroscience-Philosophy.</li>
-          </ul>
-        </section>
-
-        <section class="tour-panel" id="skills" data-label="Technical skills">
-          <p class="when">Technical skills</p>
-          <h2>Tools, methods, and data</h2>
+          
+        </article>
+        <article class="stop" id="skills" data-place="">
+          <p class="when">Toolkit</p>
+          <h2>Technical skills</h2>
+          <p class="where">Tools, methods, and data</p>
           <ul class="bullets">
             <li>Python, R, xarray, pandas, neural networks, transfer learning, random forest, eXtreme Gradient Boosting (XGBoost).</li>
             <li>Statistical and spatial methods: causal discovery (PCMCI+); copula-based spatial analysis; and calibrated uncertainty.</li>
@@ -135,34 +280,8 @@
             <li>Training: Climate &amp; Geospatial Data Analysis and Machine Learning, LEAP Train-the-Trainer Bootcamp (Jan 2023); Topics in Climate Data Science, LEAP Momentum Bootcamp (May 2022).</li>
           </ul>
           <p class="see"><a href="./#projects">Climate &amp; energy data projects</a></p>
-        </section>
-
-        <section class="tour-panel" id="awards" data-label="Awards">
-          <p class="when">2022 &ndash; present</p>
-          <h2>Awards</h2>
-          <ul class="bullets">
-            <li><strong>National Defense Science and Engineering Graduate Fellow</strong> (Sep 2024 &ndash; present). Earned a competitive three-year graduate fellowship from the Department of Defense, awarded through the Office of the Under Secretary for Research and Engineering and the military services (award rate under 6.3%).</li>
-            <li><strong>&ldquo;What We Do Matters&rdquo; and &ldquo;We Invest in a Better World,&rdquo; Burns &amp; McDonnell</strong> (Jun 2022). Two company culture recognitions for an innovative solution to a project obstacle and dedication to a client.</li>
-          </ul>
-        </section>
-
-        <section class="tour-panel" id="leadership" data-label="Leadership &amp; activities">
-          <p class="when">2016 &ndash; present</p>
-          <h2>Leadership and activities</h2>
-          <ul class="bullets">
-            <li><strong>Graduate Earth &amp; Environmental Engineering Network</strong> (May 2025 &ndash; present). Chair of the Social Committee, organizing events and growing a new graduate student organization.</li>
-            <li><strong>NVIDIA&ndash;LEAP Center Hackathon Collaboration</strong> (Jun 2025 &ndash; Jan 2026). Member of a 9-person coding sub-team within a 17-person group downscaling climate model data to high resolution around New York City for a hackathon at the American Museum of Natural History.</li>
-            <li><strong>Burns &amp; McDonnell</strong> (Aug 2020 &ndash; Dec 2022). Representative on the Microplastics Team at the Interstate Technology Regulatory Council; Diversity, Equity, &amp; Inclusion Lead for the New England regional offices; founding member of the Wallingford Green Team.</li>
-            <li><strong>Relay For Life</strong> (Aug 2016 &ndash; Apr 2020). Chaired the Fundraising committee within a 50-person Steering committee, coordinating benefit nights with local businesses for the American Cancer Society and contributing to registration of over 1,300 people.</li>
-          </ul>
-        </section>
+        </article>
       </div>
-    </div>
-
-    <div class="tour-nav" hidden>
-      <button class="btn btn-line" data-step="-1">Previous</button>
-      <span class="tour-count" aria-live="polite"></span>
-      <button class="btn btn-solid" data-step="1">Next</button>
     </div>
   </div></div>
 </main>
@@ -173,58 +292,28 @@
 
 <script src="assets/site.js"></script>
 <script>
-  // Turns the stacked resume sections into a one-at-a-time tour.
+  // Highlights the current stop in the index, and its city on the map, while scrolling.
   (function () {
-    var panels = Array.prototype.slice.call(document.querySelectorAll('.tour-panel'));
-    var list = document.querySelector('.tour-stops');
-    var nav = document.querySelector('.tour-nav');
-    var count = nav.querySelector('.tour-count');
-    var prev = nav.querySelector('[data-step="-1"]');
-    var next = nav.querySelector('[data-step="1"]');
-    var tabs = [];
-    var current = 0;
-
-    panels.forEach(function (panel, i) {
-      var li = document.createElement('li');
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.id = 'tab-' + panel.id;
-      b.setAttribute('role', 'tab');
-      b.setAttribute('aria-controls', panel.id);
-      b.innerHTML = panel.getAttribute('data-label');
-      b.addEventListener('click', function () { show(i, true); });
-      b.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); show(Math.min(i + 1, panels.length - 1), true, true); }
-        if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); show(Math.max(i - 1, 0), true, true); }
-      });
-      li.appendChild(b); list.appendChild(li); tabs.push(b);
-      panel.setAttribute('role', 'tabpanel');
-      panel.setAttribute('aria-labelledby', b.id);
-    });
-    list.hidden = false; nav.hidden = false;
-
-    function show(i, updateHash, focusTab) {
-      current = i;
-      panels.forEach(function (p, j) {
-        p.hidden = j !== i;
-        tabs[j].setAttribute('aria-selected', j === i ? 'true' : 'false');
-        tabs[j].tabIndex = j === i ? 0 : -1;
-      });
-      panels[i].classList.remove('entering'); void panels[i].offsetWidth; panels[i].classList.add('entering');
-      prev.disabled = i === 0;
-      next.disabled = i === panels.length - 1;
-      count.textContent = 'Stop ' + (i + 1) + ' of ' + panels.length;
-      if (focusTab) tabs[i].focus();
-      if (updateHash && history.replaceState) history.replaceState(null, '', '#' + panels[i].id);
-      // keep the active tab visible in the horizontal strip on small screens
-      if (tabs[i].scrollIntoView && window.innerWidth <= 900) tabs[i].scrollIntoView({ block: 'nearest', inline: 'center' });
+    var stops = Array.prototype.slice.call(document.querySelectorAll('.stop'));
+    var links = {};
+    document.querySelectorAll('.tour-index a').forEach(function (a) { links[a.hash.slice(1)] = a; });
+    var pins = document.querySelectorAll('.tour-map .pin');
+    function activate(stop) {
+      Object.keys(links).forEach(function (id) { links[id].removeAttribute('aria-current'); });
+      var link = links[stop.id];
+      link.setAttribute('aria-current', 'true');
+      if (window.innerWidth <= 900) {
+        var strip = link.closest('ol');
+        strip.scrollTo({ left: link.offsetLeft - strip.clientWidth / 2 + link.clientWidth / 2, behavior: 'smooth' });
+      }
+      var place = stop.getAttribute('data-place');
+      pins.forEach(function (p) { p.classList.toggle('active', !!place && p.getAttribute('data-place') === place); });
     }
-
-    prev.addEventListener('click', function () { show(Math.max(current - 1, 0), true); });
-    next.addEventListener('click', function () { show(Math.min(current + 1, panels.length - 1), true); });
-
-    var start = panels.findIndex(function (p) { return '#' + p.id === location.hash; });
-    show(start < 0 ? 0 : start, false);
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) activate(e.target); });
+    }, { rootMargin: '-30% 0px -65% 0px' });
+    stops.forEach(function (s) { io.observe(s); });
   })();
 </script>
 </body>
